@@ -1,6 +1,6 @@
 import { createSwaggerSpec } from "next-swagger-doc";
 import dynamic from "next/dynamic";
-import paths from "swanger/paths.json";
+import paths from "swagger/paths.json";
 
 import "swagger-ui-react/swagger-ui.css";
 import Head from "next/head";
@@ -13,7 +13,7 @@ function ApiDoc({ spec }) {
   return (
     <>
       <Head>
-        <title>Swanger | Foody App</title>
+        <title>Swagger | Foody App</title>
         <meta name="description" content="REST API for Foody APP" />
         <link
           rel="icon"
