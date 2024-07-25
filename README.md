@@ -49,3 +49,9 @@ Branchı silmək:
 ```sh
 git branch -D branchin_adi
 ```
+
+Main branchını öz branchına dartmaq (yeniləmək üçün):
+
+```sh
+git pull origin main --rebase
+```
