@@ -1,5 +1,6 @@
 .footer {
-    background-color: #181617  ;
+    background-color: #181617
+    ;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -19,10 +20,12 @@
   .footerLeft {
     flex: 1;
     padding: 20px;
+    text-align: center;
   }
   
   .footerLeft h1 {
     font-size: 24px;
+    
   }
   
   .footerLeft .dot {
@@ -31,14 +34,14 @@
   
   .footerLeft p {
     margin: 10px 0;
-    
-    color:  #828282;
-
+    color: #828282
+    ;
   }
   
   .socialIcons {
     display: flex;
     gap: 10px;
+    justify-content: center;
     margin: 10px 0;
   }
   
@@ -55,7 +58,6 @@
   }
   
   .footerSection h2 {
-
     font-size: 18px;
     margin-bottom: 10px;
   }
@@ -67,9 +69,8 @@
   
   .footerSection li {
     margin: 5px 0;
-    line-height: 
-    25px;
-    color: #BDBDBD;
+    color: #BDBDBD
+    ;
   }
   
   .footerBottom {
@@ -77,6 +78,7 @@
     margin-top: 20px;
     width: 100%;
   }
+  
   
   @media (max-width: 768px) {
     .footerContainer {

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={styles.footerLeft}>
           <h1>Foody<span className={styles.dot}>.</span></h1>
           
-          <p>Lorem ipsum is placeholder text  commonly used in the graphic,</p>
+          <p>Lorem ipsum is placeholder text <br />  commonly used in the graphic,</p>
           <div className={styles.socialIcons}>
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0.5 25C0.5 11.469 11.469 0.5 25 0.5C38.531 0.5 49.5 11.469 49.5 25C49.5 38.531 38.531 49.5 25 49.5C11.469 49.5 0.5 38.531 0.5 25Z" stroke="white"  />
