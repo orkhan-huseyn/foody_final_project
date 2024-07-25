@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useEffect } from "react";
 
-// salam salam
-
 export default function Home() {
   const { push } = useRouter();
 
