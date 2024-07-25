@@ -23,35 +23,42 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 Hansı branchda olduğunu görmək:
 
 ```sh
-git branch
+$ git branch
 ```
 
 Yeni branch yaratmaq və o brancha keçmək:
 
 ```sh
-git checkout -b sizin_branchinizin_adi
+$ git checkout -b sizin_branchinizin_adi
 ```
 
 Olduğun branchdan başqa brancha keçmək:
 
 ```sh
-git checkout kecmek_istediyin_branchin_adi
+$ git checkout kecmek_istediyin_branchin_adi
 ```
 
 Branchı GitHuba push etmək:
 
 ```sh
-git push origin branchin_adi
+$ git push origin branchin_adi
 ```
 
 Branchı silmək:
 
 ```sh
-git branch -D branchin_adi
+$ git branch -D branchin_adi
 ```
 
 Main branchını öz branchına dartmaq (yeniləmək üçün):
 
 ```sh
-git pull origin main --rebase
+$ git pull origin main --rebase
+```
+
+Başqasının branchını öz lokalınıza çəkib yoxlamaq üçün:
+
+```sh
+$ git fetch
+$ git checkout dostunuzun_branchi
 ```
