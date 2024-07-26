@@ -1,0 +1,261 @@
+/* Menu open icon, Close icon */
+
+.menuIcon {
+  display: none;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.menuIcon .long {
+  width: 32px;
+  height: 4px;
+  background-color: black;
+  margin-bottom: 7px;
+}
+.menuIcon .small {
+  width: 22px;
+  height: 4px;
+  background-color: black;
+  margin-bottom: 7px;
+}
+
+.menuIcon .small:nth-child(3) {
+  margin: 0;
+}
+
+.headerContainer .closeMenu {
+  border: 0;
+  background-color: transparent;
+  display: none;
+}
+
+/* Logo */
+
+.headerContainer {
+  background-color: #f3f4f6;
+  height: 125px;
+  padding: 0 57px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  position: relative;
+}
+
+.headerContainer .logoContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headerContainer .logoContainer .logo {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 36px;
+  color: black;
+}
+
+.logoContainer .logoDot {
+  color: #d63626;
+  font-size: 32px;
+}
+
+/* Navigation  */
+
+.headerContainer .navbar {
+  display: flex;
+  gap: 35px;
+}
+
+.headerContainer .navbar a {
+  text-decoration: none;
+  color: #828282;
+  font-weight: 500;
+  font-size: 18px;
+  transition: opacity 200ms ease;
+}
+
+.headerContainer .navbar a:hover {
+  opacity: 0.8;
+}
+
+.headerContainer .navbar a.active {
+  color: #d63626;
+}
+
+/* Input */
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.inputContainer input {
+  border: none;
+  width: 300px;
+  padding: 14px 20px;
+  border-radius: 10px;
+}
+
+.inputContainer input:focus {
+  outline: none;
+}
+
+/* Language icon */
+
+.languageIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.languageIcon button {
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+}
+
+.languageIcon button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Sign up button */
+
+.buttonContainer button {
+  border: none;
+  background-color: #d63626;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: opacity 200ms ease;
+}
+
+.buttonContainer button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+
+@media (max-width: 1300px) {
+  .headerContainer .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    gap: 50px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-100%);
+    z-index: 2000;
+    transition: all 100ms ease-in;
+  }
+
+  .headerContainer .closeMenu {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+  }
+
+  .headerContainer .openNavbar {
+    transform: translateX(0);
+  }
+
+  .headerContainer .closeNavbar {
+    transform: translateX(-100%);
+  }
+
+  .headerContainer {
+    height: 100px;
+    padding: 0 40px;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+
+  .headerContainer .inputContainer input {
+    width: 400px;
+  }
+
+  .headerContainer .inputContainer {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 980px) {
+  .headerContainer {
+    height: 80px;
+    padding: 0 25px;
+  }
+  .headerContainer .inputContainer input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 860px) {
+  .headerContainer .inputContainer input {
+    width: 250px;
+  }
+
+  .headerContainer .inputContainer {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 730px) {
+  .headerContainer .inputContainer input {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .headerContainer .inputContainer {
+    gap: 0;
+  }
+
+  .buttonContainer button {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuIcon .small,
+  .menuIcon .long {
+    margin-bottom: 5px;
+  }
+
+  .inputContainer input,
+  .buttonContainer {
+    display: none !important;
+  }
+
+  .headerContainer {
+    padding: 12px 16px;
+    height: auto;
+  }
+
+  .headerContainer .logoContainer {
+    font-size: 28px;
+  }
+
+  .languageIcon button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  .languageIcon button img {
+    width: 100%;
+    height: 100%;
+  }
+}
