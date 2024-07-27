@@ -1,29 +1,21 @@
 import Link from "next/link";
 import headerStyles from "../styles/Header.module.css";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { RiMenu2Fill } from "react-icons/ri";
 
 function Header() {
   const [active, setActive] = useState(false);
   const pathname = usePathname();
 
-  function HiddenScroll() {
-    if (!active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }
+  useEffect(() => {
+    document.body.style.overflow = !active ? "auto" : "hidden";
+  }, [active]);
 
   function ToggleNav() {
     setActive(!active);
-    HiddenScroll();
-  }
-
-  function a() {
-    
   }
 
   function closeNavbar() {
@@ -33,11 +25,7 @@ function Header() {
   return (
     <header className={headerStyles.headerContainer}>
       <div className={headerStyles.logoContainer}>
-        <div onClick={ToggleNav} className={headerStyles.menuIcon}>
-          <div className={headerStyles.long}></div>
-          <div className={headerStyles.small}></div>
-          <div className={headerStyles.small}></div>
-        </div>
+        <RiMenu2Fill className={headerStyles.menuIcon} onClick={ToggleNav} />
         <Link href="/" className={headerStyles.logo}>
           Foody<span className={headerStyles.logoDot}>.</span>
         </Link>
@@ -51,6 +39,7 @@ function Header() {
         <button onClick={ToggleNav} className={headerStyles.closeMenu}>
           <FontAwesomeIcon icon={faTimes} size="2x" />
         </button>
+
         <Link
           onClick={closeNavbar}
           href="/"
@@ -111,9 +100,12 @@ function Header() {
         </div>
 
         <div className={headerStyles.buttonContainer}>
-          <button>Sign up</button>
+          <Link href="/login">Sign up</Link>
         </div>
       </div>
+
+      {/* Overlay */}
+      {active ? <div class={headerStyles.overlay}></div> : ""}
     </header>
   );
 }
