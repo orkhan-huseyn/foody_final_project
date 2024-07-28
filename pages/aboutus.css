@@ -1,0 +1,63 @@
+.about-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+.about-text .abut-title{
+    font-family: 'Mukta', sans-serif;
+    font-size: 45px;
+}
+
+.about-text{
+    margin: 30px;
+}
+
+
+.about-image{
+    margin: 30px;
+}
+
+.about-image img{
+    height: 540px;
+}
+
+@media screen and (max-width: 600px) {
+    .about-container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .about-text .abut-title{
+        font-family: 'Mukta', sans-serif;
+        font-size: 45px;
+        margin: 15px;
+    }
+    
+    .about-text{
+        margin: 30px;
+        flex-wrap: wrap;
+       
+      
+    }
+
+    .about-text .about-description{
+        font-size: 2em;
+        margin: 10px;
+    }
+    
+    
+    .about-image{
+        margin: 30px;
+        flex-wrap: wrap;
+        
+       
+    }
+    
+    .about-image img{
+        height: 500px;
+        
+       
+    }
+    
+  }
