@@ -1,15 +1,12 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Basket from '../components/Basket';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div>
-      <Head>
-        <title>Home Page</title>
-      </Head>
-      <main></main>
+      <Basket />
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
