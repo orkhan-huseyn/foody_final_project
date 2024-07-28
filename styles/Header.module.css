@@ -221,7 +221,9 @@
     display: none;
   }
 
-  /*  */
+  .headerContainer .logoContainer .logo {
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -254,6 +256,14 @@
   .languageIcon button img {
     width: 100%;
     height: 100%;
+  }
+
+  .headerContainer .logoContainer .logo {
+    font-size: 28px;
+  }
+
+  .headerContainer .menuIcon {
+    font-size: 28px;
   }
 }
 
