@@ -1,12 +1,18 @@
 import React from 'react';
-import Basket from '../components/Basket';
+import Head from 'next/head';
+import HeroSection from 'components/HeroSection';
 
-const HomePage = () => {
-  return (
-    <div>
-      <Basket />
-    </div>
-  );
+const Home = () => {
+    return (
+        <div>
+            <Head>
+                <title>Home Page</title>
+            </Head>
+            <main>
+                <HeroSection />
+            </main>
+        </div>
+    );
 };
 
-export default HomePage;
+export default Home;
