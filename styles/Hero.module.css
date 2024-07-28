@@ -1,0 +1,277 @@
+.heroContainer {
+    background-color: #f3f4f6;
+    width: 100%;
+    padding: 0 57px 162px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    overflow-x: hidden;
+}
+
+.heroContent {
+    margin-top: 120px;
+    width: 50%;
+}
+
+.heroContent h1 {
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 70px;
+    letter-spacing: 3%;
+    margin-bottom: 20px;
+}
+
+.heroContent p {
+    color: #828282;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 3%;
+    line-height: 30px;
+    width: 75%;
+    margin-bottom: 45px;
+}
+
+.heroContent .heroButtons {
+    display: flex;
+    gap: 40px;
+}
+
+.heroContent .heroButtons .heroBtn {
+    padding: 14px 44px;
+    font-weight: 500;
+    font-size: 25px;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+}
+
+.heroButtons .heroRegisterBtn {
+    border: 0;
+
+    background-color: #d63626;
+    color: #fff;
+}
+
+.heroButtons .heroOrderBtn {
+    background-color: transparent;
+    border: 2px solid #828282;
+    color: #828282;
+}
+.heroButtons .heroBtn:focus {
+    outline: 0;
+}
+
+.heroContent .heroButtons .heroBtn:hover {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.heroImage {
+    background-color: black;
+    width: 600px;
+    height: 500px;
+    border-radius: 80px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.heroImage .heroBurger {
+    width: 700px;
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+}
+
+.heroImage .littleImg {
+    position: absolute;
+}
+
+.heroImage .heroPizza {
+    top: -30px;
+    right: -40px;
+}
+.heroImage .heroFries {
+    bottom: 90px;
+    left: -25%;
+}
+.heroImage .heroCheesBurger {
+    bottom: -50px;
+    right: -40px;
+}
+
+@media (max-width: 1440px) {
+    .heroContainer h1 {
+        font-size: 50px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1300px) {
+    .heroContainer {
+        padding: 0 40px 162px;
+    }
+    .heroImage .heroBurger {
+        width: 600px;
+    }
+}
+
+@media (max-width: 1236px) {
+    .heroImage {
+        background-color: black;
+        width: 500px;
+        height: 400px;
+    }
+
+    .heroContainer h1 {
+        font-size: 40px;
+    }
+
+    .heroContent p {
+        color: #828282;
+        font-size: 18px;
+        line-height: 1.4;
+        width: 80%;
+    }
+
+    .heroContent .heroButtons .heroBtn {
+        padding: 10px 32px;
+    }
+
+    .heroContent {
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 1130px) {
+    .heroContainer {
+        padding-top: 50px;
+        gap: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heroImage {
+        width: 70%;
+        order: -1;
+    }
+
+    .heroContent {
+        width: 80%;
+    }
+
+    .heroContent h1,
+    .heroContent p {
+        text-align: center;
+        width: 100%;
+    }
+
+    .heroContent .heroButtons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 945px) {
+    .heroImage {
+        width: 500px;
+    }
+}
+
+@media (max-width: 750px) {
+    .heroContainer {
+        padding: 0 0 50px 0;
+    }
+
+    .heroImage {
+        background-color: transparent;
+        margin-top: 0;
+    }
+
+    .heroImage .heroBurger {
+        width: 500px;
+    }
+
+    .heroImage .heroFries,
+    .heroImage .heroCheesBurger {
+        display: none;
+    }
+
+    .heroImage .heroPizza {
+        top: 130px;
+        right: 0;
+    }
+
+    .heroImage .heroPizza img {
+        width: 220px;
+    }
+
+    .heroContent h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .heroContent .heroButtons {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .heroContent {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .heroImage .heroBurger {
+        width: 450px;
+    }
+
+    .heroImage .heroPizza {
+        top: 130px;
+        right: 40px;
+    }
+
+    .heroImage .heroPizza img {
+        width: 200px;
+    }
+
+    .heroContent h1 {
+        line-height: 1.2;
+        font-size: 28px;
+    }
+
+    .heroContent p {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .heroImage .heroBurger {
+        width: 400px;
+    }
+
+    .heroImage .heroPizza {
+        top: 130px;
+        right: 80px;
+        width: 180px;
+    }
+
+    .heroImage .heroPizza img {
+        width: 180px;
+    }
+
+    .heroContent h1 {
+        font-size: 22px;
+        margin-top: -40px;
+    }
+}
+
+@media (max-width: 340px) {
+    .heroImage .heroBurger {
+        width: 350px;
+    }
+
+    .heroImage .heroPizza {
+        top: 130px;
+        right: 100px;
+    }
+}
