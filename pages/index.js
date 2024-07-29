@@ -3,7 +3,13 @@ import OrdersSidebar from '../components/OrdersSidebar';
 import OrdersTable from '../components/OrdersTable';
 import styles from '../styles/Dashboard.module.css';
 
+
+
+
+
 const Dashboard = () => {
+  
+
   return (
     <div className={styles.dashboard}>
       <OrdersSidebar />
@@ -17,5 +23,6 @@ const Dashboard = () => {
     </div>
   );
 };
+
 
 export default Dashboard;

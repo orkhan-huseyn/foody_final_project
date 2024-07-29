@@ -11,6 +11,13 @@
     background-color: #e0e0e0;
   }
   
+  .sty{
+    width: 100%;
+    background-color:#27283C
+    ;
+    padding: 2px;
+    border-radius: 20px;
+  }
   
   .ordersTable td, .ordersTable th {
     padding: 10px;

@@ -16,7 +16,8 @@ const OrdersTable = () => {
 
   return (
     <>
-      <h2 className={styles.tableTitle}>Orders</h2>
+     <div className={styles.sty}><h2 className={styles.tableTitle}>Orders</h2></div>
+     
       <div className={styles.tableContainer}>
         <table className={styles.ordersTable}>
           <thead>
