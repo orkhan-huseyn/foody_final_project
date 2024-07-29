@@ -1,22 +1,21 @@
-import React from 'react';
-import Head from 'next/head';
-import HeroSection from 'components/HeroSection';
-import Features from 'components/Features';
-import DeliciousMenu from 'components/DeliciousMenu';
+import ProfileSection from '../components/ProfileSection';
+import OrdersSidebar from '../components/OrdersSidebar';
+import OrdersTable from '../components/OrdersTable';
+import styles from '../styles/Dashboard.module.css';
 
-const Home = () => {
-    return (
-        <div>
-            <Head>
-                <title>Home Page</title>
-            </Head>
-            <main>
-                <HeroSection />
-                <Features />
-                <DeliciousMenu />
-            </main>
+const Dashboard = () => {
+  return (
+    <div className={styles.dashboard}>
+      <OrdersSidebar />
+      <div className={styles.mainContent}>
+        <div className={styles.header}>
+          <button className={styles.addButton}>+ Add Product</button>
+          <ProfileSection />
         </div>
-    );
+        <OrdersTable />
+      </div>
+    </div>
+  );
 };
 
-export default Home;
+export default Dashboard;
