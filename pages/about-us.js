@@ -1,14 +1,14 @@
 import React from 'react'
-import './aboutus.css'
+import styles from '../styles/Aboutus.module.css'
 import burger from '../assets/images/burger/burger.svg'
 
 
 function About() {
   return (
-   <div className='about-container'>
-    <div className="about-text">
-      <h1 className='abut-title'>About Us</h1>
-      <p className='about-description'>
+   <div className={styles.aboutContainer}>
+    <div className={styles.aboutText}>
+      <h1 className={styles.aboutTitle}>About Us</h1>
+      <p className={styles.aboutDescription}>
       Lorem ipsum is placeholder text commonly used in the   <br />
        graphic, print, and publishing industries for previewing layouts   <br />
        and visual mockups.Lorem ipsum is placeholder text   <br />
@@ -19,8 +19,8 @@ function About() {
        mockups.
       </p>
     </div>
-    <div className="about-image">
-      <img src={burger} alt="burger svg" />
+    <div className={styles.abutImage}>
+      <img src={burger.src} alt="burger svg" />
     </div>
    </div>
   )

@@ -1,60 +1,65 @@
-.about-container{
+.aboutContainer{
     display: flex;
     justify-content: space-around;
     gap: 30px;
 }
-.about-text .abut-title{
+.aboutText .aboutTitle{
     font-family: 'Mukta', sans-serif;
     font-size: 45px;
 }
 
-.about-text{
+.aboutText{
     margin: 30px;
 }
 
+.aboutText .aboutDescription{
+    font-size: 2em;
+    margin: 10px;
+}
 
-.about-image{
+
+.abutImage{
     margin: 30px;
 }
 
-.about-image img{
+.abutImage img{
     height: 540px;
 }
 
 @media screen and (max-width: 600px) {
-    .about-container{
+    .aboutContainer{
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
         gap: 30px;
     }
-    .about-text .abut-title{
+    .aboutText  .aboutTitle{
         font-family: 'Mukta', sans-serif;
         font-size: 45px;
         margin: 15px;
     }
     
-    .about-text{
+    .aboutText{
         margin: 30px;
         flex-wrap: wrap;
        
       
     }
 
-    .about-text .about-description{
+    .aboutText .aboutDescription{
         font-size: 2em;
         margin: 10px;
     }
     
     
-    .about-image{
+    .abutImage{
         margin: 30px;
         flex-wrap: wrap;
         
        
     }
     
-    .about-image img{
+    .abutImage{
         height: 500px;
         
        
