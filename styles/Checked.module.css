@@ -1,0 +1,80 @@
+.checkedContainer{
+    background-color: #F3F4F6;
+    width: 1031;
+    height: 515px;
+    text-align: center;
+    padding: 16px;
+   position: relative;
+    
+}
+
+.checkedTitle h2{
+    
+    margin-top: 50px;
+   
+}
+
+.checkedContainer .icon {
+    font-size: 100px;
+    color: #28a745;
+    
+    margin-top: 50px;
+}
+
+.checkedTitle {
+    font-size: 18px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        font-size: 80px;
+    }
+
+    .checkedTitle {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .icon {
+        font-size: 70px;
+    }
+
+    .checkedTitle {
+        font-size:14px;
+}
+}
+
+.checkedContainer .checkedTitle{
+    width: 385px;
+    height: 75px;
+    position: absolute;
+    left: 40%;
+}
+
+@media screen and (max-width: 600px) {
+    .checkedContainer{
+        background-color: #F3F4F6;
+        width: 320px;
+        height: 988px;
+        text-align: center;
+        position: relative;
+        padding: 16px;
+        
+    }
+    
+    .checkedContainer  i{
+        width: 133px;
+        height: 133px;
+        text-align: center;
+    }
+    
+    .checked-container .checked-title{
+        width: 222px;
+        height: 75px;
+        position: absolute;
+        left: 20%;
+    }
+  }
+
