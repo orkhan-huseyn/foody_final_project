@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from '../styles/Aboutus.module.css'
 import burger from '../assets/images/burger/burger.svg'
-
+import Layout from 'components/Layout';
 
 function About() {
   return (
+    <Layout>
    <div className={styles.aboutContainer}>
     <div className={styles.aboutText}>
       <h1 className={styles.aboutTitle}>About Us</h1>
@@ -23,6 +24,7 @@ function About() {
       <img src={burger.src} alt="burger svg" />
     </div>
    </div>
+</Layout>
   )
 }
 

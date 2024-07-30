@@ -1,8 +1,13 @@
 import React from 'react';
 import Basket from '../components/Basket';
+import Layout from '../components/Layout';
 
 const BasketPage = () => {
-  return <Basket />;
+    return (
+        <Layout>
+            <Basket />
+        </Layout>
+    );
 };
 
 export default BasketPage;
