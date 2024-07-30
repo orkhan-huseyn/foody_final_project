@@ -1,0 +1,13 @@
+.container {
+    padding: 80px;
+}
+
+.container .titleOne,
+.container .titleTwo {
+    text-align: center;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+
+
