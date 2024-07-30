@@ -1,0 +1,33 @@
+.dashboard {
+    display: flex;
+  }
+  
+  .mainContent {
+    flex: 1;
+    padding: 20px;
+    background-color: #1E1E30
+;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .addButton {
+    background-color: #ff007a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 72%;
+    border-radius: 20px;
+    
+  }
+  
+  .addButton:hover {
+    background-color: #e6006b;
+  }
+  
