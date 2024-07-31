@@ -5,6 +5,7 @@ import Features from 'components/Features';
 import DeliciousMenu from 'components/DeliciousMenu';
 import HomePizzaFries from 'components/HomePizzaFriesSec';
 import Layout from 'components/Layout';
+import NewFoods from 'components/NewFoods';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
                 <Features />
                 <DeliciousMenu />
                 <HomePizzaFries />
+                <NewFoods />
             </main>
         </Layout>
     );
