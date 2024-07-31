@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from '../styles/Checked.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
+import checked from '../assets/images/checkout/checked.svg'
 
 
-function checkout() {
+function Checkout() {
   return (
     <div className={styles.checkedContainer}>
-    <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
+        <div className={styles.image}>
+            <img src={checked.src} alt='checked icon'/>
+        </div>
     <div className={styles.checkedTitle}>
         <h2>Your order has been received</h2>
     </div>
@@ -19,4 +21,4 @@ function checkout() {
   )
 }
 
-export default checkout
+export default Checkout;

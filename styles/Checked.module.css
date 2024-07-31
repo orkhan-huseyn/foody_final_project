@@ -1,80 +1,47 @@
-.checkedContainer{
+.checkedContainer {
     background-color: #F3F4F6;
-    width: 1031;
-    height: 515px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 74px 0 150px;
+}
+
+.image {
+    margin-bottom: 25px;
+}
+
+.message h2 {
+    max-width: 80%;
     text-align: center;
-    padding: 16px;
-   position: relative;
-    
+    margin: 0 auto;
+    color: #4F4F4F;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 3%;
 }
 
-.checkedTitle h2{
-    
-    margin-top: 50px;
-   
-}
-
-.checkedContainer .icon {
-    font-size: 100px;
-    color: #28a745;
-    
-    margin-top: 50px;
-}
-
-.checkedTitle {
-    font-size: 18px;
-    color: #333;
-}
-
-@media (max-width: 768px) {
-    .icon {
-        font-size: 80px;
+@media(max-width: 768px) {
+    .image img{
+        width: 150px;
     }
 
-    .checkedTitle {
-        font-size: 16px;
+    .message h2 {
+        font-size: 26px;
     }
 }
 
-@media (max-width: 320px) {
-    .icon {
-        font-size: 70px;
+@media(max-width: 480px) {
+
+    .checkedContainer {
+        background-color: #fff;
     }
 
-    .checkedTitle {
-        font-size:14px;
+    .image img{
+        width: 100px;
+    }
+
+    .message h2 {
+        font-size: 22px;
+    }
 }
-}
-
-.checkedContainer .checkedTitle{
-    width: 385px;
-    height: 75px;
-    position: absolute;
-    left: 40%;
-}
-
-@media screen and (max-width: 600px) {
-    .checkedContainer{
-        background-color: #F3F4F6;
-        width: 320px;
-        height: 988px;
-        text-align: center;
-        position: relative;
-        padding: 16px;
-        
-    }
-    
-    .checkedContainer  i{
-        width: 133px;
-        height: 133px;
-        text-align: center;
-    }
-    
-    .checked-container .checked-title{
-        width: 222px;
-        height: 75px;
-        position: absolute;
-        left: 20%;
-    }
-  }
-
