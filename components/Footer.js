@@ -17,7 +17,7 @@ const Footer = () => {
           </h2>
           <p>
             {" "}
-            Lorem ipsum is placeholder <br /> text commonly used in the graphic,
+            Lorem ipsum is placeholder <br /> text commonly used in the graphic.
           </p>
           <div className={styles.icons}>
             <div className={styles.icon}>
