@@ -14,6 +14,7 @@ const NewFoods = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
         >
             <h2 className={styles.titleOne}>Our Popular Foods</h2>
             <h3 className={styles.titleTwo}>New Foods</h3>

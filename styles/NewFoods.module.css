@@ -35,7 +35,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 400px;
+    margin-bottom: 150px;
 }
 
 .cardContainer .card {
@@ -88,7 +88,7 @@
     }
 
     .container .cardContainer {
-        margin-bottom: 300px;
+        margin-bottom: 50px;
     }
 
     .cardContainer .card {
