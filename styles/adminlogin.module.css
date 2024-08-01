@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1E1E30;
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+
+.loginBox {
+    display: flex;
+    background: #2D2D3A;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 830px;
+    height: 411.41px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.form h1 {
+    margin-left: 20px;
+    margin-bottom: 60px;
+}
+
+.form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 280px;
+    height: 40px;
+    border-radius: 4px 0px 0px 0px;
+    background-color: #5A5B70;
+    color: white;
+}
+
+.signInButton {
+    padding: 10px;
+    background-color: #C035A2;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+}
+
+.imageBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: white;
+}
+
+.imageBox img {
+    max-width: 65%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .loginBox {
+        flex-direction: column;
+        width: 320px;
+        height: 1086px;
+    }
+
+    .imageBox {
+        display: none;
+    }
+
+    .form {
+        padding: 20px;
+    }
+}
