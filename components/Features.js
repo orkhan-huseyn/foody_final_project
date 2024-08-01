@@ -8,9 +8,10 @@ const Features = () => {
     return (
         <motion.section
             className={styles.features}
-            initial={{ opacity: 0, y: 150 }}
+            initial={{ opacity: 0, y: 250 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
+            viewport={{ once: true }}
         >
             <h2 className={styles.title}>Features</h2>
             <p className={styles.text}>
