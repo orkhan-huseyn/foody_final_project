@@ -26,7 +26,7 @@ function Register() {
                     </div>
                     <form className={styles.form}>
                         <div className={styles.formControl}>
-                            <label for="username">Full name</label>
+                            <label htmlFor="username">Full name</label>
                             <input
                                 type="text"
                                 id="username"
@@ -34,7 +34,7 @@ function Register() {
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                             <input
                                 type="text"
                                 id="username"
@@ -42,7 +42,7 @@ function Register() {
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label for="email">Email</label>
+                            <label htmlFor="email">Email</label>
                             <input
                                 type="text"
                                 id="email"
@@ -50,7 +50,7 @@ function Register() {
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <div className={styles.inputContainer}>
                                 <input type="password" />
                                 <FaRegEye className={styles.faEye} />
