@@ -1,22 +1,7 @@
-
-.container header {
-    padding: 35px;
-    background-color: #EB5757;
-}
-
-header .logo {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 800;
-    font-size: 36px;
-    letter-spacing: 3%;
-}
-
 .container .registerContainer {
     display: flex;
     justify-content: space-between;
     gap: 25px;
-    margin-top: 30px;
 }
 
 .imageContainer {
@@ -27,30 +12,28 @@ header .logo {
     height: 900px;
     border-radius: 4px;
     margin-bottom: 30px;
-    background-color: #EB5757;
+    background-color: #eb5757;
 }
 
-.imageContainer, .formContainer {
- width: 50%;
-
+.imageContainer,
+.formContainer {
+    width: 50%;
 }
 
 .container .imageContainer {
     position: relative;
 }
 
-
 .container .imageContainer img {
     width: 80%;
     height: 100%;
 }
 
-
 .registerContainer .formContainer {
     padding: 80px 20px;
 }
 
-.registerContainer  .linkContainer {
+.registerContainer .linkContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,18 +41,18 @@ header .logo {
     margin-bottom: 72px;
 }
 
-.registerContainer  .linkContainer a {
+.registerContainer .linkContainer a {
     text-decoration: none;
     font-weight: 400;
     font-size: 30px;
     color: rgba(130, 130, 130, 1);
     letter-spacing: 2px;
     cursor: pointer;
+    transition: all 150ms ease-in;
 }
 
-
-.registerContainer  .registerContainer a:hover {
-    color:#EB5757 ;
+.registerContainer a:hover {
+    color: #eb5757;
 }
 
 .formContainer .formControl {
@@ -84,15 +67,15 @@ header .logo {
     gap: 30px;
 }
 
-.formContainer  label {
+.formContainer label {
     font-weight: 500;
     font-size: 20px;
     letter-spacing: 3%;
-    color: #4F4F4F;
+    color: #4f4f4f;
 }
 
 .formContainer .formControl input {
-    background-color: #FFE7E7;
+    background-color: #ffe7e7;
     border: 0;
     border-radius: 5px;
     padding: 22px 24px;
@@ -103,6 +86,9 @@ header .logo {
     position: relative;
 }
 
+.inputContainer input {
+    width: 100%;
+}
 
 .faEye {
     position: absolute;
@@ -114,13 +100,12 @@ header .logo {
     font-size: 28px;
 }
 
-.formContainer .formControl input:focus  {
+.formContainer .formControl input:focus {
     outline: none;
 }
 
-
 .formContainer .buttonContainer button {
-    background-color: #EB5757;
+    background-color: #eb5757;
     color: #fff;
     width: 100%;
     font-weight: 500;
@@ -129,6 +114,11 @@ header .logo {
     border: 0;
     border-radius: 5px;
     margin-top: 30px;
+    transition: all 100ms ease;
+}
+.formContainer .buttonContainer button:hover {
+    transform: scale(0.98);
+    opacity: 0.9;
 }
 
 @media (max-width: 820px) {
@@ -136,6 +126,10 @@ header .logo {
         flex-direction: column;
         align-items: center;
         margin: 0;
+    }
+
+    .registerContainer .formContainer {
+        padding: 20px;
     }
 
     .imageContainer {
@@ -155,23 +149,21 @@ header .logo {
     }
 }
 
-
-
 @media (max-width: 460px) {
-
     .imageContainer {
         height: 200px;
     }
 
-
-    .linkContainer a {
-        font-size: 20px;
-        margin-top: 44px;
+    .registerContainer .linkContainer {
+        gap: 35px;
     }
 
-    .formContainer label{
+    .registerContainer .linkContainer a {
+        font-size: 24px;
+    }
+
+    .formContainer label {
         font-size: 18px;
-        font-weight: 500;
     }
 
     .formControl {
@@ -186,5 +178,4 @@ header .logo {
         padding-left: 24px;
         color: var(--gray);
     }
-
 }
