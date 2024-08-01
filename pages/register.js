@@ -38,48 +38,43 @@ function Register() {
                                 Register
                             </Link>
                         </div>
-                        {
-                            <form className={styles.form}>
-                                <div className={styles.formControl}>
-                                    <label for="username">Full name</label>
-                                    <input
-                                        type="text"
-                                        id="username"
-                                        placeholder="fullname"
-                                    />
-                                </div>
-                                <div className={styles.formControl}>
-                                    <label for="username">Username</label>
-                                    <input
-                                        type="text"
-                                        id="username"
-                                        placeholder="username"
-                                    />
-                                </div>
-                                <div className={styles.formControl}>
-                                    <label for="email">Email</label>
-                                    <input
-                                        type="text"
-                                        id="email"
-                                        placeholder="user@mail.ru"
-                                    />
-                                </div>
-                                <div className={styles.formControl}>
-                                    <label for="password">Password</label>
-                                    <div className={styles.inputContainer}>
-                                        <input
-                                            type="password"
-                                            placeholder="password"
-                                        />
-                                        <FaRegEye className={styles.faEye} />
-                                    </div>
-                                </div>
-                                <div className={styles.buttonContainer}>
-                                    <button>Register</button>
-                                </div>
-                            </form>
-                        }
                     </div>
+                    <form className={styles.form}>
+                        <div className={styles.formControl}>
+                            <label htmlFor="username">Full name</label>
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="fullname"
+                            />
+                        </div>
+                        <div className={styles.formControl}>
+                            <label htmlFor="username">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="username"
+                            />
+                        </div>
+                        <div className={styles.formControl}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="text"
+                                id="email"
+                                placeholder="user@mail.ru"
+                            />
+                        </div>
+                        <div className={styles.formControl}>
+                            <label htmlFor="password">Password</label>
+                            <div className={styles.inputContainer}>
+                                <input type="password" />
+                                <FaRegEye className={styles.faEye} />
+                            </div>
+                        </div>
+                        <div className={styles.buttonContainer}>
+                            <button>Log in</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </>

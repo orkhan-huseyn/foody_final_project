@@ -15,13 +15,6 @@ function Login() {
 
     return (
         <>
-            <Head>
-                <link
-                    rel="icon"
-                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
-                />
-                <title>Login</title>
-            </Head>
             <LoginHeader />
             <div className={styles.loginPage}>
                 <form className={styles.loginPageBody}>
@@ -30,16 +23,7 @@ function Login() {
                     </div>
                     <div className={styles.loginPageLogin}>
                         <div className={styles.loginPageLoginTitle}>
-                            <Link
-                                href="login"
-                                className={
-                                    pathname === '/login'
-                                        ? `${styles.active}`
-                                        : ''
-                                }
-                            >
-                                Login
-                            </Link>
+                            <Link href="login">Login</Link>
                             <Link href="register">Register</Link>
                         </div>
                         <div className={styles.loginPageLoginInputUser}>
@@ -73,4 +57,3 @@ function Login() {
 
 export default Login;
 
-/*! icon elave et */
