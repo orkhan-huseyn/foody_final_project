@@ -3,11 +3,16 @@ import styles from '../styles/Login.module.css';
 import Link from 'next/link';
 import { FaRegEye } from 'react-icons/fa';
 import Head from 'next/head';
+import { usePathname } from 'next/navigation';
 
 import loginImage from '../assets/images/login/client.png';
 import LoginHeader from 'components/LoginHeader';
 
 function Login() {
+    const pathname = usePathname();
+
+    console.log(pathname);
+
     return (
         <>
             <Head>
@@ -25,7 +30,16 @@ function Login() {
                     </div>
                     <div className={styles.loginPageLogin}>
                         <div className={styles.loginPageLoginTitle}>
-                            <Link href="login">Login</Link>
+                            <Link
+                                href="login"
+                                className={
+                                    pathname === '/login'
+                                        ? `${styles.active}`
+                                        : ''
+                                }
+                            >
+                                Login
+                            </Link>
                             <Link href="register">Register</Link>
                         </div>
                         <div className={styles.loginPageLoginInputUser}>

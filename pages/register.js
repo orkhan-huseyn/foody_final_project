@@ -5,8 +5,10 @@ import register from '../assets/images/register/register.svg';
 import { FaRegEye } from 'react-icons/fa';
 import LoginHeader from 'components/LoginHeader';
 import Head from 'next/head';
+import { usePathname } from 'next/navigation';
 
 function Register() {
+    const pathname = usePathname();
     return (
         <>
             <Head>
@@ -25,7 +27,16 @@ function Register() {
                     <div className={styles.formContainer}>
                         <div className={styles.linkContainer}>
                             <Link href="/login">Login</Link>
-                            <Link href="/register">Register</Link>
+                            <Link
+                                href="/register"
+                                className={
+                                    pathname === '/register'
+                                        ? `${styles.active}`
+                                        : ''
+                                }
+                            >
+                                Register
+                            </Link>
                         </div>
                         {
                             <form className={styles.form}>
