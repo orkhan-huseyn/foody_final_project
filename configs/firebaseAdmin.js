@@ -2,12 +2,12 @@
 import admin from "firebase-admin";
 
 if (!admin.apps.length) {
-  // const serviceAccount = require("./foodyapp-51b6e-firebase-adminsdk-1f971-aef5cf5866.json"); // Replace with your own path
+  const serviceAccount = require("./foodyapp-51b6e-firebase-adminsdk-1f971-aef5cf5866.json"); // Replace with your own path
 
-  // admin.initializeApp({
-  //   credential: admin.credential.cert(serviceAccount),
-  //   databaseURL: 'https://foody-test-3224a.firebaseio.com'
-  // });
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: 'https://foody-test-3224a.firebaseio.com'
+  });
 }
 
 export const storage = admin.storage();
