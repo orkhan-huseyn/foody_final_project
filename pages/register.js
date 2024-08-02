@@ -4,10 +4,18 @@ import register from '../assets/images/register/register.svg';
 
 import { FaRegEye } from 'react-icons/fa';
 import LoginHeader from 'components/LoginHeader';
+import Head from 'next/head';
 
 function Register() {
     return (
         <>
+            <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>Register</title>
+            </Head>
             <LoginHeader />
             <div className={styles.container}>
                 <div className={styles.registerContainer}>
@@ -48,7 +56,10 @@ function Register() {
                                 <div className={styles.formControl}>
                                     <label for="password">Password</label>
                                     <div className={styles.inputContainer}>
-                                        <input type="password" placeholder='password'/>
+                                        <input
+                                            type="password"
+                                            placeholder="password"
+                                        />
                                         <FaRegEye className={styles.faEye} />
                                     </div>
                                 </div>

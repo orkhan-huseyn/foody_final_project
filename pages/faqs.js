@@ -3,6 +3,7 @@ import styles from '../styles/Faq.module.css';
 import { useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 
 import Layout from '../components/Layout';
 
@@ -38,6 +39,13 @@ const faqs = () => {
 
     return (
         <Layout>
+                <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>FAQs</title>
+            </Head>
             <motion.div
                 initial={{ scaleX: 0.3 }}
                 animate={{ scaleX: 1 }}

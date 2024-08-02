@@ -3,6 +3,7 @@ import styles from '../styles/Aboutus.module.css';
 import Layout from 'components/Layout';
 
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 
 import largeYellow from '../assets/images/aboutus/largeyellow.svg';
 import smallYellow from '../assets/images/aboutus/smallyellow.svg';
@@ -22,6 +23,13 @@ const bounceAnimation = {
 function About() {
     return (
         <Layout>
+                <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>About Us</title>
+            </Head>
             <motion.div
                 className={styles.aboutContainer}
                 initial={{ opacity: 0, y: 150 }}

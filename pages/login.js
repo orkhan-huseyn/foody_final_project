@@ -2,6 +2,7 @@ import styles from '../styles/Login.module.css';
 
 import Link from 'next/link';
 import { FaRegEye } from 'react-icons/fa';
+import Head from 'next/head';
 
 import loginImage from '../assets/images/login/client.png';
 import LoginHeader from 'components/LoginHeader';
@@ -9,6 +10,13 @@ import LoginHeader from 'components/LoginHeader';
 function Login() {
     return (
         <>
+            <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>Login</title>
+            </Head>
             <LoginHeader />
             <div className={styles.loginPage}>
                 <form className={styles.loginPageBody}>
