@@ -88,10 +88,11 @@
 .column a {
     color: #bdbdbd;
     text-decoration: none;
+    transition: all 200ms ease;
 }
 
 .column a:hover {
-    text-decoration: underline;
+    color: #fb9300;
 }
 
 .dot {
