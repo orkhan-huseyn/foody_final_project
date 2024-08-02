@@ -3,9 +3,6 @@ import styles from "../styles/Login.module.css";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
 import loginImage from '../assets/images/login/client.png'
-import flag from '../assets/images/login/flag.png'
-
-
 
 function Login() {
   return (

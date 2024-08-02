@@ -188,8 +188,6 @@
 
 @media (max-width: 460px) {
 
-
-
     .faBar {
         display: flex;
         margin-right: 12px;
@@ -216,7 +214,6 @@
     .loginPageMain {
         height: 200px;
     }
-
 
 
     .loginPageMain img {
@@ -249,7 +246,6 @@
     }
 
    
-
     .faEye {
         position: absolute;
         top: 50%;
