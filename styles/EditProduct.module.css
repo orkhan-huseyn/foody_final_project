@@ -1,0 +1,38 @@
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .cancelButton, .deleteButton {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .cancelButton {
+    background-color: #CCC;
+    color: #000;
+  }
+  
+  .deleteButton {
+    background-color: #C035A2;
+    color: #FFF;
+  }
+  
