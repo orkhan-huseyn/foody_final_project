@@ -1,0 +1,71 @@
+
+.container {
+    background-color: #27283C;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .addButton {
+    background-color: #C035A2;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .productCard {
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #000;
+  }
+  
+  .productCard img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .editButton, .deleteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .deleteButton{
+    color: #EB5757
+    ;
+    
+
+  }
+  .editButton{
+    color: #00B2A9
+    ;
+  
+
+  }
