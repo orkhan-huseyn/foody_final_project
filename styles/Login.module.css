@@ -152,6 +152,10 @@ a.active {
     }
 }
 
+.active {
+    color: #eb5757 !important;
+}
+
 @media (max-width: 460px) {
     .loginPageHeader {
         flex-direction: row;

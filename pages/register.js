@@ -5,12 +5,20 @@ import Head from 'next/head';
 import register from '../assets/images/register/register.svg';
 import { FaRegEye } from 'react-icons/fa';
 import LoginHeader from 'components/LoginHeader';
+import Head from 'next/head';
 
 function Register() {
     const router = useRouter();
 
     return (
         <>
+            <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>Register</title>
+            </Head>
             <LoginHeader />
             <Head>
                 <title>Register</title>
@@ -23,16 +31,7 @@ function Register() {
                     <div className={styles.formContainer}>
                         <div className={styles.linkContainer}>
                             <Link href="/login">Login</Link>
-                            <Link
-                                href="register"
-                                className={
-                                    router.pathname === '/register'
-                                        ? styles.active
-                                        : ''
-                                }
-                            >
-                                Register
-                            </Link>
+                            <Link className='active' href="/register">Register</Link>
                         </div>
                         <form className={styles.form}>
                             <div className={styles.formControl}>

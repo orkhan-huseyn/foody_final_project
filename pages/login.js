@@ -24,14 +24,7 @@ function Login() {
                     </div>
                     <div className={styles.loginPageLogin}>
                         <div className={styles.loginPageLoginTitle}>
-                            <Link
-                                href="login"
-                                className={
-                                    router.pathname === '/login'
-                                        ? styles.active
-                                        : ''
-                                }
-                            >
+                            <Link className="active" href="login">
                                 Login
                             </Link>
                             <Link href="register">Register</Link>
@@ -66,5 +59,3 @@ function Login() {
 }
 
 export default Login;
-
-/*! icon elave et */
