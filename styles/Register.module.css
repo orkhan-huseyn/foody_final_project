@@ -116,13 +116,14 @@
     margin-top: 30px;
     transition: all 100ms ease;
 }
+
 .formContainer .buttonContainer button:hover {
     transform: scale(0.98);
     opacity: 0.9;
 }
 
-.active {
-    color: #eb5757 !important;
+.linkContainer a.active {
+    color: #eb5757;
 }
 
 @media (max-width: 820px) {

@@ -1,12 +1,15 @@
 import styles from '../styles/Register.module.css';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 import register from '../assets/images/register/register.svg';
-
 import { FaRegEye } from 'react-icons/fa';
 import LoginHeader from 'components/LoginHeader';
 import Head from 'next/head';
 
 function Register() {
+    const router = useRouter();
+
     return (
         <>
             <Head>
@@ -17,6 +20,9 @@ function Register() {
                 <title>Register</title>
             </Head>
             <LoginHeader />
+            <Head>
+                <title>Register</title>
+            </Head>
             <div className={styles.container}>
                 <div className={styles.registerContainer}>
                     <div className={styles.imageContainer}>
@@ -47,7 +53,7 @@ function Register() {
                             <div className={styles.formControl}>
                                 <label htmlFor="email">Email</label>
                                 <input
-                                    type="text"
+                                    type="email"
                                     id="email"
                                     placeholder="user@mail.ru"
                                 />
@@ -56,8 +62,8 @@ function Register() {
                                 <label htmlFor="password">Password</label>
                                 <div className={styles.inputContainer}>
                                     <input
-                                        id="password"
                                         type="password"
+                                        id="password"
                                         placeholder="password"
                                     />
                                     <FaRegEye className={styles.faEye} />
