@@ -121,6 +121,10 @@
     transition: all 100ms ease;
 }
 
+a.active {
+    color: #eb5757;
+}
+
 @media (max-width: 820px) {
     .loginPageHeader {
         height: 90px;
