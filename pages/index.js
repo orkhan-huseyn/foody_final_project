@@ -12,7 +12,11 @@ const Home = () => {
     return (
         <Layout>
             <Head>
-                <title>Home Page</title>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>Foody</title>
             </Head>
             <main>
                 <HeroSection />

@@ -6,10 +6,18 @@ import SmallYellow from '../assets/images/howitworks/smallsvg1.svg';
 import SmallDelivery from '../assets/images/howitworks/largesvg2.svg';
 import styles from '../styles/HowItWorks.module.css';
 import Layout from 'components/Layout';
+import Head from 'next/head';
 
 function HowItWorks() {
     return (
         <Layout>
+                <Head>
+                <link
+                    rel="icon"
+                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
+                />
+                <title>How it works</title>
+            </Head>
             <motion.div
                 className={styles.container}
                 initial={{ opacity: 0, scale: 0.5 }}
