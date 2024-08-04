@@ -1,0 +1,41 @@
+.sidebar {
+    background-color: #8A3FFC;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    height: 100vh;
+    color: #8A3FFC;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menuItem {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    background-color: #8A3FFC;
+    border: none;
+  }
+  
+  .menuItem.active {
+    background-color: #5A00F6;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .menuItem svg {
+    margin-right: 10px;
+  }
+  
+  
