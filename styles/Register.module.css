@@ -121,6 +121,10 @@
     opacity: 0.9;
 }
 
+.active {
+    color: #eb5757 !important;
+}
+
 @media (max-width: 820px) {
     .registerContainer {
         flex-direction: column;
