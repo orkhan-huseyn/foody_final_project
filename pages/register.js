@@ -1,15 +1,11 @@
 import styles from '../styles/Register.module.css';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 import register from '../assets/images/register/register.svg';
 import { FaRegEye } from 'react-icons/fa';
 import LoginHeader from 'components/LoginHeader';
-import Head from 'next/head';
 
 function Register() {
-    const router = useRouter();
-
     return (
         <>
             <Head>
@@ -31,7 +27,7 @@ function Register() {
                     <div className={styles.formContainer}>
                         <div className={styles.linkContainer}>
                             <Link href="/login">Login</Link>
-                            <Link className='active' href="/register">Register</Link>
+                            <Link className={styles.active} href="/register">Register</Link>
                         </div>
                         <form className={styles.form}>
                             <div className={styles.formControl}>

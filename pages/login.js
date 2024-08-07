@@ -1,6 +1,5 @@
 import styles from '../styles/Login.module.css';
 
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 import { FaRegEye } from 'react-icons/fa';
@@ -9,8 +8,6 @@ import loginImage from '../assets/images/login/client.png';
 import LoginHeader from 'components/LoginHeader';
 
 function Login() {
-    const router = useRouter();
-
     return (
         <>
             <LoginHeader />
@@ -24,7 +21,7 @@ function Login() {
                     </div>
                     <div className={styles.loginPageLogin}>
                         <div className={styles.loginPageLoginTitle}>
-                            <Link className="active" href="login">
+                            <Link className={styles.active} href="login">
                                 Login
                             </Link>
                             <Link href="register">Register</Link>
