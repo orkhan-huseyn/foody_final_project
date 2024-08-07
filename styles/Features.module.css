@@ -33,6 +33,12 @@
     flex: 1 1 calc(33.333% - 50px);
     max-width: calc(33.333% - 50px);
     box-sizing: border-box;
+    transition: all 300ms ease;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+    cursor: pointer;
 }
 
 .card img {

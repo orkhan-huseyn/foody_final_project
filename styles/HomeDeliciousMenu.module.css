@@ -73,6 +73,10 @@
         line-height: 30px;
         display: block;
     }
+
+    .pizzaSec {
+        order: -1;
+    }
 }
 
 @media (max-width: 420px) {

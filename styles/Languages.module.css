@@ -1,0 +1,44 @@
+.languageIconContainer {
+    position: relative;
+}
+
+.languageIconContainer button {
+    border: none;
+    background-color: transparent;
+    transition: all 200ms ease;
+}
+
+.languageIconContainer button:hover {
+    opacity: 0.8;
+}
+
+.languageIconContainer button:focus {
+    outline: none;
+}
+
+.languageIconContainer .languageOptions {
+    background-color: #fff;
+    padding: 0 9px;
+    margin-top: 10px;
+    position: absolute;
+    left: -9px;
+    z-index: 5000;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.languageOptions button {
+    border-top: 1px solid #dfdfdf;
+    padding: 15px 0;
+}
+
+.languageOptions button:first-child {
+    border: 0;
+}
+
+.languageOptions {
+    display: none;
+}
+
+.active {
+    display: block;
+}
