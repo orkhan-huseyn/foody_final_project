@@ -1,0 +1,100 @@
+.productDetails {
+    padding: 20px 35px 20px 0;
+    border-top: 1px solid #d9d9d9;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.productDetails .deleteBtn {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    color: #bdbdbd;
+    font-size: 22px;
+    transition: color 0.2s ease-in-out;
+}
+
+.productDetails .deleteBtn:hover {
+    color: red;
+}
+
+.productDetails .deleteBtn:focus {
+    outline: none;
+}
+
+.productDetails .leftDetails {
+    display: flex;
+    gap: 10px;
+}
+
+.productDetails .leftDetails div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.productDetails .leftDetails img {
+    width: 50px;
+}
+
+.productDetails .leftDetails span:first-child {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4f4f4f;
+}
+
+.productDetails .leftDetails span:last-child {
+    font-size: 14px;
+    color: #4f4f4f;
+}
+
+.productDetails .btnContainer {
+    background-color: #fff;
+    padding: 3px 6px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.productDetails .btnContainer button {
+    background-color: transparent;
+    border: none;
+}
+
+.productDetails .btnContainer button:focus {
+    outline: 0;
+}
+
+@media (max-width: 768px) {
+    .productDetails .btnContainer {
+        background-color: #e9e9eb;
+    }
+
+    .productDetails .deleteBtn {
+        left: 0;
+        display: flex;
+    }
+
+    .productDetails .leftDetails span:first-child {
+        font-size: 14px;
+    }
+
+    .productDetails .leftDetails span:last-child {
+        font-size: 12px;
+    }
+
+    .productDetails {
+        padding: 25px 0 20px 0;
+        border-top: 1px solid #d9d9d9;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+    }
+}

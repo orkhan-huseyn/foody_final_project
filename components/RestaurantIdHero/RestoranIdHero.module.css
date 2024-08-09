@@ -1,0 +1,132 @@
+.container {
+    padding-bottom: 20px;
+    margin: 10px 25px 25px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 65px;
+}
+
+.imageContainer img {
+    width: 70%;
+}
+
+.description {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.description .details {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.description span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.addresContainer span:first-child {
+    color: #4f4f4f;
+    font-style: 22px;
+    font-weight: 700;
+    letter-spacing: 3%;
+    word-spacing: 1px;
+}
+
+.addresContainer span:last-child,
+.cuisine span:last-child {
+    color: #828282;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 3%;
+}
+
+.cuisine {
+    margin-right: 15px;
+}
+
+.cuisine span:first-child {
+    color: #828282;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 3%;
+}
+
+.details .delivery {
+    padding: 2px 4px;
+    border: 1px solid #d63626;
+    border-radius: 5px;
+    height: 45px;
+}
+
+.details .delivery span {
+    color: #d63626;
+    font-size: 14px;
+}
+
+.backBtn button {
+    background-color: #d63626;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 45px;
+    padding: 0 5px;
+    transition: all 200ms ease-in-out;
+}
+
+.backBtn button:hover {
+    opacity: 0.9;
+}
+
+.backBtn button:focus {
+    outline: 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 0 0 5px;
+        border: 0;
+    }
+
+    .imageContainer {
+        margin-bottom: 45px;
+    }
+
+    .imageContainer img {
+        width: 80%;
+    }
+
+    .description {
+        flex-direction: column;
+    }
+
+    .description .details {
+        gap: 0;
+    }
+
+    .description .details .delivery {
+        margin-left: auto;
+    }
+
+    .description .addresContainer,
+    .details {
+        padding: 15px;
+    }
+
+    .addresContainer,
+    .details {
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .backBtn button {
+        display: none;
+    }
+}

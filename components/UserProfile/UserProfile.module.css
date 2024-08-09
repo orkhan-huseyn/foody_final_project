@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.profileContainer {
+    font-family: 'Mukta';
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f3f4f6;
+    border-radius: 5px;
+    padding: 40px 40px 30px;
+}
+
+.profileHeader {
+    color: #4f4f4f;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.uploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.uploadCircle {
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: opacity 200ms ease-in-out;
+}
+
+.uploadCircle:hover {
+    opacity: 0.8;
+}
+
+.formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 35px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    flex: 1 1 45%;
+}
+
+.formGroup label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4f4f4f;
+    margin-bottom: 5px;
+}
+
+.formGroup input {
+    font-size: 16px;
+
+    padding: 0 23px;
+    height: 50px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.formGroup input:focus {
+    outline: none;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    flex: 1 1 45%;
+    margin-top: 15px;
+}
+
+.saveButton button {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #6fcf97;
+    font-weight: 600;
+    border: none;
+    height: 50px;
+    border-radius: 4px;
+    padding: 14px;
+    width: 100%;
+    transition: all 200ms ease-in-out;
+}
+
+.saveButton button:hover {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.saveButton button:focus {
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .profileContainer {
+        padding: 40px 20px 30px;
+        background-color: #fff;
+    }
+
+    .profileHeader {
+        font-size: 22px;
+    }
+
+    .formGroup {
+        flex: 1 1 100%;
+    }
+
+    .formContainer input,
+    .uploadCircle {
+        background-color: #f3f4f6;
+    }
+}

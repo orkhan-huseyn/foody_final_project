@@ -1,21 +1,11 @@
-import ProfileSection from '../../components/ProfileSection';
-import OrdersSidebar from '../../components/OrdersSidebar';
-import OrdersTable from '../../components/OrdersTable';
-import styles from '../../styles/Dashboard.module.css';
+import AdminLayout from 'components/AdminLayout/AdminLayout';
 
-const Dashboard = () => {
+function adminlayout() {
     return (
-        <div className={styles.dashboard}>
-            <OrdersSidebar />
-            <div className={styles.mainContent}>
-                <div className={styles.header}>
-                    <button className={styles.addButton}>+ Add Product</button>
-                    <ProfileSection />
-                </div>
-                <OrdersTable />
-            </div>
+        <div>
+            <AdminLayout />
         </div>
     );
-};
+}
 
-export default Dashboard;
+export default adminlayout;

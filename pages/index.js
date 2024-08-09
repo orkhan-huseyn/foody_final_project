@@ -1,22 +1,19 @@
-import React from 'react';
+import HeroSection from '../components/HeroSection/HeroSection';
+import Features from '../components/Features/Features';
+import DeliciousMenu from '../components/DeliciousMenu/DeliciousMenu';
+import HomePizzaFries from '../components/HomePizzaFriesSec/HomePizzaFriesSec';
+import Layout from '../components/RootLayout/Layout';
+import NewFoods from '../components/NewFoods/NewFoods';
+import ExploreRestaurants from '../components/ExploreRestaurants/ExploreRestaurants';
+
 import Head from 'next/head';
-import HeroSection from 'components/HeroSection';
-import Features from 'components/Features';
-import DeliciousMenu from 'components/DeliciousMenu';
-import HomePizzaFries from 'components/HomePizzaFriesSec';
-import Layout from 'components/Layout';
-import NewFoods from 'components/NewFoods';
-import ExploreRestaurants from 'components/ExploreRestaurants';
 
 const Home = () => {
     return (
         <Layout>
             <Head>
-                <link
-                    rel="icon"
-                    href="https://play-lh.googleusercontent.com/YwxUwH-UZ2VmRo1ZXiZ_T4BvgUdq6nfxeieUel_zofPbl9nmH_wFyxOOwwhYhd36F00"
-                />
-                <title>Foody</title>
+                <link rel="icon" href="/favicon.ico" />
+                <title>Home</title>
             </Head>
             <main>
                 <HeroSection />

@@ -1,0 +1,71 @@
+.loginPageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 122px;
+    background-color: #eb5757;
+    padding: 0 36px;
+    margin: 25px;
+}
+
+.faBar {
+    display: none;
+}
+
+.loginPageHeader a {
+    text-decoration: none;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #fff;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.logoContainer .faBar {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 950px) {
+    .loginPageHeader {
+        height: 80px;
+        margin: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .loginPageHeader {
+        height: 70px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 460px) {
+    .faBar {
+        display: block;
+    }
+
+    .loginPageHeader {
+        flex-direction: row;
+        height: auto;
+        margin: 0;
+        padding: 20px;
+        border-radius: 0;
+    }
+
+    .loginPageHeader a {
+        display: flex;
+        font-size: 25px;
+        margin: 10px 0;
+        width: auto;
+        height: auto;
+    }
+}
