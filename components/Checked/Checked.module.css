@@ -1,0 +1,48 @@
+.checkedContainer {
+    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 74px 0 150px;
+    border-radius: 5px;
+    height: 453px;
+}
+
+.image {
+    margin-bottom: 25px;
+}
+
+.message h2 {
+    max-width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    color: #4f4f4f;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 3%;
+}
+
+@media (max-width: 768px) {
+    .image img {
+        width: 150px;
+    }
+
+    .message h2 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkedContainer {
+        background-color: #fff;
+    }
+
+    .image img {
+        width: 100px;
+    }
+
+    .message h2 {
+        font-size: 22px;
+    }
+}

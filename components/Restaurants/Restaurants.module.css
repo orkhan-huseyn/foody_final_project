@@ -1,0 +1,321 @@
+.restaurantsContainer {
+    margin: 25px;
+}
+
+.navbar {
+    display: none;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 30px 0;
+}
+
+.navbarIcon {
+    color: #4f4f4f;
+    font-size: 32px;
+    margin-right: 5px;
+}
+
+.navbar h3 {
+    font-family: 'Mukta';
+    color: #4f4f4f;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3%;
+}
+
+.container {
+    display: flex;
+}
+
+.menuBar {
+    background-color: #f3f4f6;
+    flex: 1;
+    height: 900px;
+    overflow: auto;
+    margin-right: 25px;
+    padding: 25px 15px;
+}
+
+.menuBarTitle {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.menuBarTitle img {
+    width: 30px;
+    height: 30px;
+}
+
+.menuBarTitle a {
+    font-family: 'Mukta';
+    color: #333333;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3%;
+    transition: all 200ms ease-in-out;
+}
+
+.menuBarTitle:hover a {
+    color: #d63626;
+}
+
+.menuBarTitle:hover {
+    background-color: #facfcb;
+}
+
+.restaurants {
+    flex: 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-self: flex-start;
+}
+
+.restaurants .card {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    padding: 16px 16px 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(249, 132, 132, 0.2);
+    transition: all 0.5s, opacity 0.3s;
+    opacity: 0;
+}
+
+.card:hover::before {
+    bottom: 0;
+    opacity: 1;
+    height: 100%;
+}
+
+.cardImg {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cardImg img {
+    width: 70%;
+}
+
+.card h3 {
+    color: #4f4f4f;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 3%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.card p {
+    width: 70%;
+    color: #828282;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price h6 {
+    color: #4f4f4f;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3%;
+}
+
+.price h5 {
+    background-color: #d63626;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 8px 16px;
+    border: none;
+    font-weight: 400;
+    letter-spacing: 3%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileMenu {
+    display: none;
+}
+
+@media (max-width: 1300px) {
+    .restaurantsContainer {
+        margin: 15px;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    .menuBar {
+        display: none;
+    }
+
+    .mobileMenuOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .mobileMenu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        background-color: white;
+        position: absolute;
+        bottom: 0;
+        padding: 0 15px 20px;
+        height: 70%;
+    }
+
+    .mobileMenuItems {
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    .mobileMenuItem {
+        display: flex;
+        align-items: center;
+    }
+
+    .mobileMenuItem:not(:last-child) {
+        border-bottom: 1px solid rgba(189, 189, 189, 1);
+    }
+
+    .mobileMenu a {
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 3%;
+        padding: 20px;
+        transition: all 200ms ease-in-out;
+    }
+
+    .mobileMenu a:hover {
+        color: #d63626;
+    }
+
+    .mobileMenu button {
+        background-color: transparent;
+        border: 0;
+    }
+
+    .closeIconMain {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .closeIcon {
+        margin-top: 15px;
+        width: 35px;
+        height: 35px;
+        color: #bdbdbd;
+    }
+}
+
+@media (max-width: 1000px) {
+    .restaurants {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .restaurants {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .restaurants {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+
+    .restaurants .card {
+        padding: 10px;
+    }
+
+    .card h3 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .card p {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .price {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .price h6 {
+        font-size: 12px;
+    }
+
+    .price h5 {
+        width: 108px;
+        height: 19px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 340px) {
+    .restaurants {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+}

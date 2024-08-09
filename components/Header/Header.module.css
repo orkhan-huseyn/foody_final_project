@@ -1,0 +1,161 @@
+.headerContainer {
+    background-color: #f3f4f6;
+    height: 125px;
+    padding: 0 57px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 25px 0 25px;
+}
+
+.headerContainer .menuIcon {
+    font-size: 34px;
+    margin-right: 15px;
+    display: none;
+}
+
+.headerContainer .logoContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.headerContainer .logoContainer .logo {
+    font-family: 'Mukta', sans-serif;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 36px;
+    color: black;
+}
+
+.logoContainer .logoDot {
+    color: #d63626;
+    font-size: 32px;
+}
+
+.logoContainer button {
+    border: 0;
+    background-color: transparent;
+}
+
+.headerContainer .navbar {
+    display: flex;
+    justify-content: space-around;
+    flex-basis: 50%;
+}
+
+.headerContainer .navbar a {
+    position: relative;
+    text-decoration: none;
+    color: #828282;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 100ms ease;
+}
+
+.headerContainer .navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #d63626;
+    transition: width 0.3s ease;
+}
+
+.headerContainer .navbar a:hover::after {
+    width: 100%;
+}
+
+.headerContainer .navbar a.active {
+    color: #d63626;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    justify-content: space-between;
+}
+
+.inputContainer input {
+    display: block;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    width: 60%;
+}
+
+.buttonContainer a {
+    text-decoration: none;
+    border: none;
+    background-color: #d63626;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: opacity 200ms ease;
+}
+
+.buttonContainer a:hover {
+    opacity: 0.8;
+}
+
+/* Responsive */
+
+@media (max-width: 1300px) {
+    .headerContainer {
+        margin: 15px 15px 0 15px;
+    }
+    .headerContainer .navbar {
+        display: none;
+    }
+
+    .headerContainer {
+        height: 100px;
+        padding: 0 40px;
+    }
+
+    .headerContainer .menuIcon {
+        display: block;
+    }
+
+    .inputContainer {
+        width: 70%;
+        justify-content: flex-end;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .headerContainer .inputContainer {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerContainer {
+        height: 90px;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 680px) {
+    .inputContainer input,
+    .buttonContainer {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .menuIcon .small,
+    .menuIcon .long {
+        margin-bottom: 5px;
+    }
+
+    .headerContainer {
+        padding: 12px 16px;
+        height: auto;
+    }
+}

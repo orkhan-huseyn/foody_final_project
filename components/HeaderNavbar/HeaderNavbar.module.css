@@ -1,0 +1,103 @@
+.overlayContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background-color: transparent;
+    border: 0;
+    font-size: 28px;
+    color: red;
+    transition: all 0.5ms ease-in-out;
+}
+
+.closeBtn:hover {
+    font-size: 27px;
+}
+
+.signupBtn {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    text-decoration: none;
+    border: none;
+    background-color: #d63626;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: opacity 200ms ease;
+    margin: 30px auto;
+}
+
+.signupBtn:hover {
+    opacity: 0.8;
+}
+
+.navbar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.navbar nav a {
+    width: max-content;
+    text-decoration: none;
+    color: #828282;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #d63626;
+    transition: width 0.3s ease;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+.navbar nav a.active {
+    color: #d63626;
+}
+
+@media (min-width: 1300px) {
+    .overlayContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 680px) {
+    .signupBtn {
+        display: flex;
+        width: 90%;
+    }
+}

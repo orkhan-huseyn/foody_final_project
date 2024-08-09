@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.container {
+    background-color: #1e1e30;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container header {
+    background-color: #27283c;
+    height: 70px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.container header .btnContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.container header .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container header .logoContainer .menuIcon {
+    font-size: 26px;
+    color: #fff;
+    display: none;
+    cursor: pointer;
+}
+
+.container header .logoContainer a {
+    font-family: 'Mukta';
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 800;
+    color: #f5f5f5;
+}
+
+.container header a .dot {
+    color: orange;
+    margin-left: 3px;
+}
+
+.container header .btnContainer .addProduct {
+    text-transform: uppercase;
+    border: 0;
+    background-color: #c035a2;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 200ms ease-in-out;
+}
+.container header .btnContainer .addProduct .plusIcon {
+    font-size: 12px;
+}
+
+.container header .btnContainer .addProduct:hover {
+    transform: scale(0.98);
+}
+
+.container header .btnContainer .adminImage {
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container header .btnContainer .adminImage img {
+    width: 45px;
+    height: 45px;
+}
+
+.container .mainContainer {
+    display: flex;
+    margin: 20px 20px 0;
+}
+
+.container .mainContainer .sidebar {
+    flex: 0.8;
+    margin-right: 30px;
+    padding: 25px 20px;
+    background-color: #c74feb;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 200px;
+}
+
+.container .mainContainer .sidebar a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fcddec;
+    letter-spacing: 0.1px;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 200ms ease-in-out;
+}
+
+.container .mainContainer .sidebar a .icon {
+    font-size: 24px;
+}
+
+.container .mainContainer .sidebar a:last-child {
+    margin: 20px 0 40px;
+}
+
+.container .mainContainer .sidebar a.active {
+    background-color: rgba(227, 134, 255, 0.3);
+    border-radius: 10px;
+}
+
+.container .mainContainer .sidebar a:hover {
+    transform: translateX(10px);
+    color: #ff1f9d;
+}
+
+.container .eacamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 275px;
+    height: 100px;
+    background-color: #27283c;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 15px;
+}
+
+.container .eacamp img {
+    width: 35px;
+}
+
+.container .eacamp span {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    line-height: 3%;
+    color: #c7c7c7;
+}
+
+.container .mainContainer .content {
+    flex: 4;
+}
+
+@media (max-width: 768px) {
+    .container header .logoContainer .menuIcon {
+        display: block;
+    }
+
+    .container .mainContainer .sidebar {
+        display: none;
+    }
+
+    .container header {
+        margin: 0;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container header .btnContainer {
+        gap: 15px;
+    }
+
+    .container header .btnContainer .addProduct {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        padding: 0;
+    }
+
+    .container header .btnContainer .addProduct .plusIcon {
+        font-size: 20px;
+    }
+
+    .container header .btnContainer .addProduct span {
+        display: none;
+    }
+
+    .container header .btnContainer .adminImage img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .container header .btnContainer .languages {
+        display: none;
+    }
+
+    .container .eacamp {
+        width: 200px;
+        height: 70px;
+    }
+}
