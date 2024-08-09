@@ -213,5 +213,6 @@
     .container .eacamp {
         width: 200px;
         height: 70px;
+        display: none;
     }
 }

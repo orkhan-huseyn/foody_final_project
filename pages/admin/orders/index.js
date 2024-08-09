@@ -1,9 +1,14 @@
 import AdminLayout from 'components/AdminLayout/AdminLayout';
+import AdminOrdersTable from 'components/AdminOrdersTable/AdminOrdersTable';
+import styles from 'components/AdminOrdersTable/AdminOrdersTable.module.css';
 
 const Dashboard = () => {
     return (
         <AdminLayout>
-            <div>Componenti cagir bu divin icinde</div>
+            <div>
+            
+            </div>
+            <AdminOrdersTable />
         </AdminLayout>
     );
 };
