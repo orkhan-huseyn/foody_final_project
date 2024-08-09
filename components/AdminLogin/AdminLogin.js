@@ -1,4 +1,4 @@
-import styles from './adminlogin.module.css';
+import styles from './Adminlogin.module.css';
 
 const AdminLogin = () => {
     return (
