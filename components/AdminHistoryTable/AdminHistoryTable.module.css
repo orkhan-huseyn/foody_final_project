@@ -1,0 +1,129 @@
+.tableContainer {
+    overflow-x: auto;
+    padding: 10px;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+
+}
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table td {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+
+@media (max-width: 480px) {
+    .tableContainer {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #444;
+    }
+
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        flex-basis: 50%;
+        text-align: left;
+        color: #B0B0C3;
+    }
+}
+
+.pagination {
+    display: none; 
+}
+
+@media (max-width: 450px) {
+    .pagination {
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #27283C;
+        color: #fff;
+    }
+
+    .pagination .pageInfo {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .pagination .pageControls {
+        display: flex;
+        align-items: center;
+    }
+
+    .pagination button {
+        background-color: #fff;
+        color: #27283C;
+        border: none;
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .pagination button:hover {
+        background-color: #ddd;
+    }
+
+    .pagination button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .pagination select {
+        background-color: #fff;
+        color: #27283C;
+        border: none;
+        padding: 8px;
+        margin-left: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
