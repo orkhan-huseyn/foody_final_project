@@ -1,11 +1,14 @@
 import AdminLayout from 'components/AdminLayout/AdminLayout';
+import AdminHistoryTable from 'components/AdminHistoryTable/AdminHistoryTable';  
 
-function adminhistory() {
+function AdminHistory() {
     return (
         <AdminLayout>
-            <div>Componenti cagir bu divin icinde</div>
+            <div>
+                <AdminHistoryTable />  
+            </div>
         </AdminLayout>
     );
 }
 
-export default adminhistory;
+export default AdminHistory;
