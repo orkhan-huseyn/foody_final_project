@@ -128,12 +128,12 @@ function AdminLayout({ children }) {
                 </div>
 
                 <div className={styles.content}>{children}</div>
-
-                <div className={styles.eacamp}>
-                    <img src={eacamp.src} />
-                    <span>EACAMP M3</span>
-                </div>
             </main>
+
+            <div className={styles.eacamp}>
+                <img src={eacamp.src} />
+                <span>EACAMP M3</span>
+            </div>
 
             {showSidebar ? (
                 <AdminSidebar

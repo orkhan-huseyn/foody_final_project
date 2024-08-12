@@ -1,8 +1,10 @@
+import CategoryHeader from 'components/CategoryHeader/CategoryHeader';
 import styles from './AdminCategoryTable.module.css';
 
 import { useState } from 'react';
 
-import CategoryEditDeleteButtons from '../CategoryEditDeleteButtons.js/CategoryEditDeleteButtons';
+import { FaPencil } from 'react-icons/fa6';
+import { MdOutlineDelete } from 'react-icons/md';
 
 const CategoryTable = () => {
     const [categories, setCategories] = useState([
@@ -26,59 +28,44 @@ const CategoryTable = () => {
         },
     ]);
 
-    const handleEdit = (categoryId) => {
-        const categoryToEdit = categories.find((cat) => cat.id === categoryId);
-        console.log(`Edit category with id: ${categoryId}`, categoryToEdit);
-    };
-
-    const handleDelete = (categoryId) => {
-        const updatedCategories = categories.filter(
-            (cat) => cat.id !== categoryId
-        );
-        setCategories(updatedCategories);
-        console.log(`Delete category with id: ${categoryId}`);
-    };
-
     return (
-        <div className={styles.tableContainer}>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Slug</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {categories.map((category, index) => (
-                        <tr key={index}>
-                            <td className={styles.tableCell}>{category.id}</td>
-                            <td className={styles.tableCell}>
-                                <img
-                                    className={styles.img}
-                                    src={category.image}
-                                    alt={category.name}
-                                />
-                            </td>
-                            <td className={styles.tableCell}>
-                                {category.name}
-                            </td>
-                            <td className={styles.tableCell}>
-                                {category.slug}
-                            </td>
-                            <td className={styles.tableCell}>
-                                <CategoryEditDeleteButtons
-                                    onEdit={() => handleEdit(category.id)}
-                                    onDelete={() => handleDelete(category.id)}
-                                />
-                            </td>
+        <>
+            <CategoryHeader />
+            <div className={styles.tableContainer}>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Slug</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {categories.map((detail) => (
+                            <tr>
+                                <td className={styles.categoryId}>
+                                    <span>{detail.id}</span>
+                                </td>
+                                <td className={styles.imageColumn}>
+                                    <img src={detail.image} />
+                                </td>
+                                <td>{detail.name}</td>
+                                <td>{detail.slug}</td>
+                                <td className={styles.btnColumn}>
+                                    <div>
+                                        <FaPencil className={styles.editIcon} />
+                                        <MdOutlineDelete
+                                            className={styles.deleteIcon}
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
 };
 

@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    background-color: #27283c;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.header > span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #f2f2f2;
+    opacity: 0.8;
+}
+
+.header .addBtn {
+    border: 0;
+    background-color: #c035a2;
+    border-radius: 18px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 200ms ease-in-out;
+}
+
+.header .addBtn:hover {
+    opacity: 0.8;
+}
+
+.header .addBtn .plusIcon {
+    color: #fff;
+}
+
+.header .addBtn span {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .header > button {
+        width: 100%;
+    }
+}

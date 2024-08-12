@@ -4,7 +4,7 @@
     background-color: #1e1e30;
     width: 100%;
     min-height: 100vh;
-    position: relative;
+    padding-bottom: 20px;
 }
 
 .container header {
@@ -94,7 +94,7 @@
 }
 
 .container .mainContainer .sidebar {
-    flex: 0.8;
+    flex: 1;
     margin-right: 30px;
     padding: 25px 20px;
     background-color: #c74feb;
@@ -144,10 +144,11 @@
     width: 275px;
     height: 100px;
     background-color: #27283c;
-    position: absolute;
     bottom: 20px;
     left: 20px;
     border-radius: 15px;
+    opacity: 0.5;
+    margin: 20px 0 0 20px;
 }
 
 .container .eacamp img {
@@ -163,6 +164,7 @@
 
 .container .mainContainer .content {
     flex: 4;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
