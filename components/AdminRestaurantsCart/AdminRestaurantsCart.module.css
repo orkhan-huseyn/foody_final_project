@@ -1,0 +1,125 @@
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 44px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 247px;
+    height: 83px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.cardHeader {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cardContent {
+    text-align: center;
+    margin-left: 10px;
+}
+
+.cardContent h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cardContent p {
+    margin: 0;
+    font-size: 13px;
+    color: #666666;
+    margin-top: 14px;
+}
+
+.cardFooter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.editIcon,
+.deleteIcon {
+    font-size: 16px;
+}
+.editIcon{
+    color: #00B2A9  ;
+    width: 15px;
+    
+}
+.deleteIcon{
+    color: #EB5757  ;
+    width: 15px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    display: block;
+    margin-left:20px ;
+    
+    
+    
+}
+.pageButton {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 22px;
+    cursor: pointer;
+    border: 3px solid#EC5CF8
+    ;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+    
+}
+.pageButton:disabled {
+    color:#EC5CF8 ;
+    cursor: not-allowed;
+    
+}
+
+.pageButton.active {
+    color:white ;
+    background-color:#EC5CF8;
+    
+}
+
+@media (max-width: 320px) {
+    .cardsContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
