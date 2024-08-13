@@ -1,9 +1,10 @@
 import AdminLayout from 'components/AdminLayout/AdminLayout';
+import AdminRestaurantsCart from 'components/AdminRestaurantsCart/AdminRestaurantsCart';
 
 function index() {
     return (
         <AdminLayout>
-            <div>Componenti cagir bu divin icinde</div>
+            <div> <AdminRestaurantsCart /></div>
         </AdminLayout>
     );
 }
