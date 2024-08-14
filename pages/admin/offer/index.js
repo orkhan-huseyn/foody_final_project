@@ -1,9 +1,9 @@
 import AdminLayout from 'components/AdminLayout/AdminLayout';
-
+import AdminOfferTable from 'components/AdminOfferTable/AdminOfferTable';
 function index() {
     return (
         <AdminLayout>
-            <div>Componenti cagir bu divin icinde</div>
+            <div> <AdminOfferTable /></div>
         </AdminLayout>
     );
 }
