@@ -1,0 +1,103 @@
+.tableContainer {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.offerTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.offerTable th, .offerTable td {
+    padding: 15px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.offerTable th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.offerTable td img.offerImage {
+    width: 40px; 
+    height: 40px;
+    object-fit: cover;
+}
+
+.offerTable td {
+    vertical-align: middle;
+}
+
+.editIcon, .deleteIcon {
+    margin-left: 8px;
+    cursor: pointer;
+   
+}
+
+.editIcon{
+    color: #00B2A9 ;
+    width: 19px;
+    height: 19px;
+}
+.deleteIcon {
+    color: #EB5757;
+    width: 19px;
+    height: 19px;
+}
+
+.editIcon:hover, .deleteIcon:hover {
+    opacity: 0.7;
+}
+
+.paginationContainer {
+    display: none; 
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #27283C; 
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.paginationInfo {
+    color: white;
+    font-size: 14px;
+}
+
+.paginationControls {
+    display: flex;
+    align-items: center;
+}
+
+.paginationButton {
+    background-color: white;
+    border: none;
+    color: #27283C;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.paginationButton:hover {
+    background-color: #f2f2f2;
+}
+
+.pageSelector {
+    background-color: white;
+    border: none;
+    color: #27283C;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+@media (min-width: 250px) and (max-width: 480px) {
+    .paginationContainer {
+        display: flex;
+    }
+
+}
