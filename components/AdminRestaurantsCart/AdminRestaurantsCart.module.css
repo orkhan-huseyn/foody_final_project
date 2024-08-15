@@ -29,8 +29,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
 }
 
 .logo {
@@ -47,13 +48,15 @@
     margin: 0;
     font-size: 15px;
     font-weight: 600;
+    margin-right: 30px;
 }
 
 .cardContent p {
     margin: 0;
     font-size: 13px;
     color: #666666;
-    margin-top: 14px;
+    margin-top: 11px;
+    margin-right: 42px;
 }
 
 .cardFooter {
@@ -67,13 +70,11 @@
     font-size: 16px;
 }
 .editIcon{
-    color: #00B2A9  ;
-    width: 15px;
+    color: #00B2A9;
     
 }
 .deleteIcon{
-    color: #EB5757  ;
-    width: 15px;
+    color: #EB5757;
 }
 .pagination {
     display: flex;
