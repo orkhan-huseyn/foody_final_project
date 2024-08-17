@@ -1,0 +1,247 @@
+.ordersContainer {
+    padding: 20px;
+    background-color: #F3F4F6;
+}
+
+.ordersTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.ordersTable th, .ordersTable td {
+    padding: 10px;
+    text-align: left;
+}
+
+.ordersTable th {
+    background-color: #f2f2f2;
+}
+
+.orderId {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.actionMenu {
+    position: relative;
+}
+
+.actionMenu .dropdownMenu {
+    display: none;
+    position: absolute;
+    left: 18px;
+    top: 5px;
+    width: 70px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    z-index: 10;
+}
+
+.actionMenu:hover .dropdownMenu {
+    display: block;
+}
+
+.actionMenu{
+    color: #828282 ;
+}
+.showButton {
+    color: #6FCF97; 
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.deleteButton {
+    color: #EB5757; 
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pageButton {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #eae6e6;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #828282;
+}
+
+.pageNumber {
+    margin: 0 10px;
+}
+
+.rowsPerPage {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: #828282;
+}
+
+.rowsPerPage select {
+    margin-left: 5px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    border: 2px solid #B0BAC9 ;
+}
+
+.popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    padding: 20px;
+
+}
+
+.popupContent {
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    height: 280px;
+    box-shadow: 0px 0px 20px rgba(82, 66, 66, 0.1);
+    position: relative;
+}
+
+.deletePopupContent {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    height: 221px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.deletePopupActions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cancelButton {
+    background-color: #f2f2f2;
+    color: #828282;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: 2px solid gray;
+}
+
+.confirmDeleteButton {
+    background-color: #EB5757;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}.popupContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 754px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-height: 80vh; 
+    overflow-y: auto; 
+}
+
+.popupContent img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.popupContent table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.popupContent th, .popupContent td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.popupContent th {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+    .popupContent {
+        width: 100%;
+        padding: 15px;
+        max-width: 600px;
+    }
+
+    .popupContent th, .popupContent td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .popupContent img {
+        width: 40px;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .popupContent {
+        width: 100%;
+        padding: 10px;
+        max-width: 320px;
+    }
+
+    .popupContent th, .popupContent td {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .popupContent img {
+        width: 30px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+}
