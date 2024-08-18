@@ -1,40 +1,44 @@
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 20px 32px;
     background-color: #27283c;
     border-radius: 15px;
     margin-bottom: 40px;
 }
 
-.header > span {
+.header .headerTitle {
     font-size: 20px;
     font-weight: 500;
     color: #f2f2f2;
     opacity: 0.8;
 }
 
-.header .addBtn {
-    border: 0;
+.header .right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header .addProductBtn {
     background-color: #c035a2;
+    border: 0;
     border-radius: 18px;
     padding: 8px 16px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     transition: all 200ms ease-in-out;
 }
 
-.header .addBtn:hover {
-    opacity: 0.8;
-}
-
-.header .addBtn .plusIcon {
+.header .addProductBtn .plusIcon {
     color: #fff;
 }
 
-.header .addBtn span {
+.header .addProductBtn .buttonText {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
@@ -42,14 +46,31 @@
     letter-spacing: 1px;
 }
 
-@media (max-width: 480px) {
+.header .addProductBtn:hover {
+    opacity: 0.8;
+}
+@media (max-width: 810px) {
     .header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
 
-    .header > button {
+    .header .right {
+        width: 100%;
+    }
+
+    .header .right .addProductBtn {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .right {
+        flex-direction: column;
+    }
+
+    .header .right .addProductBtn {
         width: 100%;
     }
 }

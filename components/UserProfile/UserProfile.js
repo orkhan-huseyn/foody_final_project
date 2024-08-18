@@ -1,4 +1,3 @@
-import { color } from 'framer-motion';
 import styles from './UserProfile.module.css';
 
 import { IoMdCloudUpload } from 'react-icons/io';
