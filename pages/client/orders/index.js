@@ -1,7 +1,7 @@
 import Head from 'next/head';
-
 import UserProfileLayout from 'components/UserProfileLayout/UserProfileLayout';
 import Layout from 'components/RootLayout/Layout';
+import OrderComponent from 'components/Orders/orders'; 
 
 function index() {
     return (
@@ -10,7 +10,9 @@ function index() {
                 <link rel="icon" href="/favicon.ico" />
                 <title>Orders</title>
             </Head>
-            <UserProfileLayout></UserProfileLayout>
+            <UserProfileLayout>
+                <OrderComponent /> 
+            </UserProfileLayout>
         </Layout>
     );
 }
