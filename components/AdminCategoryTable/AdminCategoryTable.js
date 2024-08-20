@@ -1,64 +1,111 @@
 import styles from './AdminCategoryTable.module.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
 
 import { FaPencil } from 'react-icons/fa6';
 import { MdOutlineDelete } from 'react-icons/md';
-
 const CategoryTable = () => {
-    const [categories, setCategories] = useState([
-        {
-            id: 9177,
-            name: 'Pizza',
-            slug: 'yummy-pizza',
-        },
-    ]);
-
+    const [categories, setCategories] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [name, setName] = useState('');
     const [slug, setSlug] = useState('');
+    const [categoryImg, setCategoryImg] = useState(null);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
     // Requests
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        const data = {
+            name,
+            slug,
+            img_url:
+                'https://t3.ftcdn.net/jpg/06/27/23/56/360_F_627235669_iz0O2leKYRzjxAKdFP7odpp9eCOZREtN.jpg',
+        };
         if (isEditing) {
-            // PUT REQUEST
-            console.log('edit');
+            //PUT REQUEST
+            try {
+                await axios.put(
+                    `http://localhost:3000/api/category/${selectedCategoryId}`,
+                    data,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                resetForm();
+            } catch (error) {
+                console.error('Error:', error);
+            }
             resetForm();
         } else {
-            // POST REQUEST
-            console.log('add');
+            //POST REQUEST
+            try {
+                await axios.post('http://localhost:3000/api/category', data, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                resetForm();
+            } catch (error) {
+                console.error('Error:', error);
+            }
             resetForm();
         }
         setShowForm(false);
     };
 
-    const handleCancelForm = () => {
-        // CLOSE FORM
-        console.log('cancel');
+    // GET REQUEST
 
-        setShowForm(false);
-        resetForm();
-    };
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get(
+                    'http://localhost:3000/api/category'
+                );
+                setCategories(response.data.result.data);
+            } catch (error) {
+                console.error('Error', error);
+            }
+        };
 
-    const handleDeleteCategory = () => {
-        // DELETE REQUEST
-        console.log('delete');
+        fetchCategories();
+    }, []);
+
+    // DELETE REQUEST
+
+    const handleDeleteCategory = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/api/category/${id}`);
+            const updatedCategories = categories.filter(
+                (category) => category.id !== id
+            );
+            setCategories(updatedCategories);
+        } catch (error) {
+            console.error('Error', error);
+        }
     };
 
     // Toggle form component
 
-    const handleOpenForm = (isEdit) => {
+    const handleOpenForm = (isEdit, id) => {
         setIsEditing(isEdit);
         setShowForm(true);
+        setSelectedCategoryId(id);
     };
 
     const handleCloseForm = () => {
         setShowForm(false);
+    };
+
+    const handleCancelForm = () => {
+        setShowForm(false);
+        resetForm();
     };
 
     // Reset form
@@ -84,6 +131,7 @@ const CategoryTable = () => {
             : 'Add your Category information',
         handleSubmit,
         handleCancelForm,
+        setCategoryImg,
         informations: [
             {
                 label: 'Name',
@@ -91,16 +139,15 @@ const CategoryTable = () => {
                 value: name,
                 id: 'name',
                 placeholder: 'Sea food',
-                onChange: setName,
+                onChange: (e) => setName(e.target.value),
             },
-
             {
                 label: 'Slug',
                 type: 'text',
                 value: slug,
                 id: 'slug',
                 placeholder: 'Yummy soup',
-                onChange: setSlug,
+                onChange: (e) => setSlug(e.target.value),
             },
         ],
     };
@@ -128,18 +175,22 @@ const CategoryTable = () => {
                                     <span>{detail.id}</span>
                                 </td>
                                 <td className={styles.imageColumn}>
-                                    <img src={detail.image} alt="food" />
+                                    <img src={detail.img_url} alt="food" />
                                 </td>
                                 <td>{detail.name}</td>
                                 <td>{detail.slug}</td>
                                 <td className={styles.btnColumn}>
                                     <div>
                                         <FaPencil
-                                            onClick={() => handleOpenForm(true)}
+                                            onClick={() =>
+                                                handleOpenForm(true, detail.id)
+                                            }
                                             className={styles.editIcon}
                                         />
                                         <MdOutlineDelete
-                                            onClick={handleDeleteCategory}
+                                            onClick={() =>
+                                                handleDeleteCategory(detail.id)
+                                            }
                                             className={styles.deleteIcon}
                                         />
                                     </div>
