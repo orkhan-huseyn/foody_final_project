@@ -11,6 +11,7 @@ function AdminFormSection({ handleCloseForm, fields }) {
         informations,
         handleSubmit,
         handleCancelForm,
+        setCategoryImg,
     } = fields;
 
     const handleFormSubmit = (e) => {
@@ -34,7 +35,13 @@ function AdminFormSection({ handleCloseForm, fields }) {
                             <span>Upload Image</span>
                         </div>
                         <div className={styles.uploadInput}>
-                            <input type="file" id="upload" />
+                            <input
+                                type="file"
+                                id="upload"
+                                onChange={(e) =>
+                                    setCategoryImg(e.target.files[0])
+                                }
+                            />
                             <label htmlFor="upload">
                                 <IoMdCloudUpload
                                     className={styles.uploadIcon}
@@ -72,9 +79,7 @@ function AdminFormSection({ handleCloseForm, fields }) {
                                         ) : (
                                             <input
                                                 onChange={(e) =>
-                                                    information.onChange(
-                                                        e.target.value
-                                                    )
+                                                    information.onChange(e)
                                                 }
                                                 value={information.value}
                                                 type={information.type}
