@@ -6,7 +6,7 @@ if (admin.apps.length === 0) {
         credential: applicationDefault(),
         projectId: 'foody-app-fe87a',
     });
-}
+
 
 export const storage = admin.storage();
 export const firestore = admin.firestore();
