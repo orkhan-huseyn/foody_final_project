@@ -4,8 +4,10 @@ import Pizza from '../../assets/images/explorerestaurants/pizza.svg';
 import Burger from '../../assets/images/explorerestaurants/burger.svg';
 
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 function ExploreRestaurants() {
+    const { t } = useTranslation();
     return (
         <motion.div
             className={styles.container}
@@ -20,8 +22,8 @@ function ExploreRestaurants() {
         >
             <img src={Pizza.src} className={styles.image} />
             <div className={styles.text}>
-                <h4>Discover Restaurants Near From you</h4>
-                <button>Explore now</button>
+                <h4>{t('discoveryrest')}</h4>
+                <button>{t('explorenow')}</button>
             </div>
             <img src={Burger.src} className={styles.image} />
         </motion.div>

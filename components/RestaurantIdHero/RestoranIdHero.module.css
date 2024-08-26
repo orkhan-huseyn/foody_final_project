@@ -74,6 +74,7 @@
 .backBtn button {
     background-color: #d63626;
     color: #fff;
+    min-width: 90px;
     border: none;
     border-radius: 5px;
     font-size: 14px;

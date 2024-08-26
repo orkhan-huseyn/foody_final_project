@@ -1,7 +1,10 @@
 import styles from './HomeDeliciousMenu.module.css';
-import KfcMenu from '../../assets/images/HomeFastFood/menu.svg';
+
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
+
+import KfcMenu from '../../assets/images/HomeFastFood/menu.svg';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -22,11 +25,12 @@ const leftVariants = {
 };
 
 function DeliciousMenu() {
-
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
+
+    const { t } = useTranslation();
 
     return (
         <motion.section
@@ -40,19 +44,9 @@ function DeliciousMenu() {
                 variants={rightVariants}
                 className={styles.textContainer}
             >
-                <h2>Menu That Always Make You Fall In Love</h2>
-                <p className={styles.pr1}>
-                    Lorem ipsum is placeholder text commonly used in the
-                    graphic, print, and publishing industries for previewing
-                    layouts and visual mockups.Lorem ipsum is placeholder text
-                    commonly used in the graphic, print, and publishing
-                    industries for previewing layouts and visual mockups.
-                </p>
-                <p className={styles.pr2}>
-                    Lorem ipsum is placeholder text commonly used in the
-                    graphic, print, and publishing industries for previewing
-                    layouts and visual mockups.
-                </p>
+                <h2>{t('homemenuone')}</h2>
+                <p className={styles.pr1}>{t('homemenupr1')}</p>
+                <p className={styles.pr2}>{t('homemenupr2')}</p>
             </motion.div>
             <motion.div
                 variants={leftVariants}

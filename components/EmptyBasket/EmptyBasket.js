@@ -1,6 +1,6 @@
 import styles from './EmptyBasket.module.css';
 
-import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import { IoBasketOutline } from 'react-icons/io5';
 import { SlClose } from 'react-icons/sl';
@@ -9,6 +9,8 @@ import EmptyBasketSvg from '../../assets/images/restaurant-id/emptybasket.svg';
 import RedEmptyBasketSvg from '../../assets/images/restaurant-id/redemptybasket.svg';
 
 function EmptyBasket({ showBasket, setShowBasket }) {
+    const { t } = useTranslation();
+
     function handleCloseBasket() {
         setShowBasket(false);
     }
@@ -30,7 +32,7 @@ function EmptyBasket({ showBasket, setShowBasket }) {
                 <div className={styles.items}>
                     <span>
                         <span>
-                            <IoBasketOutline size={'24px'} /> 0 Items
+                            <IoBasketOutline size={'24px'} /> 0 {t('items')}
                         </span>
                     </span>
                 </div>
@@ -40,11 +42,11 @@ function EmptyBasket({ showBasket, setShowBasket }) {
                 </div>
                 <div className={styles.text}>
                     <span>Opps!</span>
-                    <span>Basket empty</span>
+                    <span>{t('emptybasket')}</span>
                 </div>
                 <div className={styles.emptyBtn}>
                     <button className={styles.button}>
-                        Checkout
+                        {t('checkout')}
                         <span className={styles.price}>$0.00</span>
                     </button>
                 </div>

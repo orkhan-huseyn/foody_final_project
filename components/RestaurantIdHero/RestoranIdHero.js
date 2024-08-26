@@ -1,10 +1,12 @@
 import styles from './RestoranIdHero.module.css';
 
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 import PapaJohnsLogo from '../../assets/images/restaurant-id/papa-johns-logo.png';
 
 function PapaJohnsHero() {
+    const { t } = useTranslation();
     return (
         <>
             <motion.div
@@ -28,15 +30,15 @@ function PapaJohnsHero() {
                     </div>
                     <div className={styles.details}>
                         <div className={styles.cuisine}>
-                            <span>Cuisine</span>
+                            <span>{t('cuisine')}</span>
                             <span>pizza, drink, hotdog, sendvich, roll</span>
                         </div>
                         <div className={styles.delivery}>
                             <span>$5</span>
-                            <span>Delivery</span>
+                            <span>{t('delivery')}</span>
                         </div>
                         <div className={styles.backBtn}>
-                            <button>Go Back</button>
+                            <button>{t('goback')}</button>
                         </div>
                     </div>
                 </div>

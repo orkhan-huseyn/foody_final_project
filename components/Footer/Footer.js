@@ -1,5 +1,9 @@
 import styles from './Footer.module.css';
+
+import { useTranslation } from 'react-i18next';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import {
     faFacebook,
     faInstagram,
@@ -7,6 +11,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
+    const { t } = useTranslation();
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
@@ -33,55 +38,54 @@ const Footer = () => {
                 </div>
                 <div className={styles.footerLinks}>
                     <div className={styles.column}>
-                        <h3>Popular</h3>
+                        <h3>{t('popular')}</h3>
                         <ul>
                             <li>
-                                <a href="/">Programming</a>
+                                <a href="/">{t('programming')}</a>
                             </li>
                             <li>
-                                <a href="/"> Books for children</a>
+                                <a href="/">{t('booksforchildren')}</a>
                             </li>
                             <li>
-                                <a href="/">Psychology</a>
+                                <a href="/">{t('psychology')}</a>
                             </li>
                             <li>
-                                <a href="/">Business </a>
+                                <a href="/">{t('business')}</a>
                             </li>
                         </ul>
                     </div>
                     <div className={styles.column}>
-                        <h3>Cash</h3>
+                        <h3>{t('cash')}</h3>
                         <ul>
                             <li>
-                                <a href="/">Delivery</a>
+                                <a href="/">{t('deliverylink')}</a>
                             </li>
                             <li>
-                                <a href="/"> Payment</a>
+                                <a href="/"> {t('payment')}</a>
                             </li>
                             <li>
-                                <a href="/">About the store</a>
+                                <a href="/">{t('aboutthestore')}</a>
                             </li>
                         </ul>
                     </div>
                     <div className={styles.column}>
-                        <h3>Help</h3>
+                        <h3>{t('help')}</h3>
                         <ul>
                             <li>
-                                <a href="/">Contacts</a>
+                                <a href="/">{t('contacts')}</a>
                             </li>
                             <li>
-                                <a href="/">Purchase returns</a>
+                                <a href="/">{t('purchasereturns')}</a>
                             </li>
                             <li>
-                                <a href="/">Buyer help</a>
+                                <a href="/">{t('buyerhelp')}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <p className={styles.copyright}>
-                All rights reserved © 2003-2022 Foody TERMS OF USE | Privacy
-                Policy <span>Foody</span>
+                {t('copyright')} <span>Foody</span>
             </p>
         </footer>
     );

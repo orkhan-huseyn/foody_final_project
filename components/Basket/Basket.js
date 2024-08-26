@@ -1,6 +1,7 @@
 import styles from './Basket.module.css';
 
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import { IoBasketOutline } from 'react-icons/io5';
 import { SlClose } from 'react-icons/sl';
@@ -37,6 +38,7 @@ const details = [
 ];
 
 function Basket({ showBasket, setShowBasket }) {
+    const { t } = useTranslation();
     function handleShowBasket() {
         setShowBasket(false);
     }
@@ -63,7 +65,7 @@ function Basket({ showBasket, setShowBasket }) {
                     <IoBasketOutline
                         style={{ color: '#D63626', fontSize: '22px' }}
                     />
-                    <span>3 Items</span>
+                    <span>3 {t('items')}</span>
                 </div>
 
                 <div className={styles.basketProducts}>
@@ -73,7 +75,7 @@ function Basket({ showBasket, setShowBasket }) {
                 </div>
                 <div className={styles.checkoutBtn}>
                     <Link href="/client/checkout" className={styles.button}>
-                        Checkout
+                        {t("checkout")}
                         <span className={styles.price}>$37.40</span>
                     </Link>
                 </div>

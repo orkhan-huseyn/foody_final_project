@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import styles from './Checked.module.css';
+
+import { useTranslation } from 'react-i18next';
+
 import checked from '../../assets/images/checkout/checked.svg';
 import React from 'react';
 
@@ -10,6 +13,8 @@ const Checked = () => {
         setIsOrderReceived(true);
     };
 
+function Checkout() {
+    const { t } = useTranslation();
     return (
       <div className={styles.container}>
         {isOrderReceived ? (
@@ -18,6 +23,7 @@ const Checked = () => {
               <img src={checked.src} alt="checked icon" />
             </div>
             <div className={styles.checkedTitle}>
+                <h2>{t('checkedtext')}</h2>
               <h2>Your order has been received</h2>
             </div>
           </div>

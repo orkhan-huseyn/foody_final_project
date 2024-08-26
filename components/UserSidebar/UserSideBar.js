@@ -2,6 +2,7 @@ import styles from './Sidebar.module.css';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { IoBasketOutline, IoBagCheckOutline } from 'react-icons/io5';
@@ -9,6 +10,7 @@ import { VscBookmark } from 'react-icons/vsc';
 import { CiLogout } from 'react-icons/ci';
 
 function Sidebar() {
+    const { t } = useTranslation();
     const router = useRouter();
     const isActive = (path) => router.pathname === path;
 
@@ -23,7 +25,7 @@ function Sidebar() {
                         }
                     >
                         <MdOutlineSupervisorAccount className={styles.icon} />
-                        Profile
+                        {t('profile')}
                     </Link>
                 </li>
                 <li>
@@ -34,7 +36,7 @@ function Sidebar() {
                         }
                     >
                         <IoBasketOutline className={styles.icon} />
-                        Your Basket
+                        {t('yourbasket')}
                     </Link>
                 </li>
                 <li>
@@ -45,7 +47,7 @@ function Sidebar() {
                         }
                     >
                         <VscBookmark className={styles.icon} />
-                        Your Orders
+                        {t('yourorders')}
                     </Link>
                 </li>
                 <li>
@@ -56,13 +58,13 @@ function Sidebar() {
                         }
                     >
                         <IoBagCheckOutline className={styles.icon} />
-                        Checkout
+                        {t('checkout')}
                     </Link>
                 </li>
                 <li>
                     <Link href="/client/logout">
                         <CiLogout className={styles.icon} />
-                        Logout
+                        {t('logout')}
                     </Link>
                 </li>
             </ul>

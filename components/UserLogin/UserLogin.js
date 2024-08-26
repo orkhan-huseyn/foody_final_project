@@ -1,12 +1,14 @@
 import styles from './UserLogin.module.css';
 
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import { FaRegEye } from 'react-icons/fa';
 
 import loginImage from '../../assets/images/login/client.png';
 
 function Login() {
+    const { t } = useTranslation();
     return (
         <div className={styles.loginPage}>
             <form className={styles.loginPageBody}>
@@ -16,31 +18,31 @@ function Login() {
                 <div className={styles.loginPageLogin}>
                     <div className={styles.loginPageLoginTitle}>
                         <Link className={styles.active} href="login">
-                            Login
+                            {t('login')}
                         </Link>
-                        <Link href="/client/register">Register</Link>
+                        <Link href="/client/register">{t('register')}</Link>
                     </div>
                     <div className={styles.loginPageLoginInputUser}>
-                        <label for="username">Username</label>
+                        <label for="username">{t('username')}</label>
                         <input
                             type="text"
                             id="username"
-                            placeholder="username"
+                            placeholder={t('placeholderusername')}
                         />
                     </div>
                     <div className={styles.loginPageLoginInputPassword}>
-                        <label for="password">Password</label>
+                        <label for="password">{t('password')}</label>
                         <div className={styles.inputContainer}>
                             <input
                                 type="password"
                                 id="password"
-                                placeholder="password"
+                                placeholder={t('placeholderpassword')}
                             />
                             <FaRegEye className={styles.faEye} />
                         </div>
                     </div>
                     <div className={styles.loginPageLoginButton}>
-                        <button>Log in</button>
+                        <button>{t('loginbutton')}</button>
                     </div>
                 </div>
             </form>

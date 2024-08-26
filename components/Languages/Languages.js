@@ -1,9 +1,10 @@
 import styles from './Languages.module.css';
+
 import { useState } from 'react';
+import i18n from '../../i18n';
 
 import az from '../../assets/images/flags/az.svg';
 import uk from '../../assets/images/flags/uk.svg';
-import france from '../../assets/images/flags/france.svg';
 
 const flags = [
     {
@@ -12,11 +13,7 @@ const flags = [
     },
     {
         src: uk.src,
-        code: 'uk',
-    },
-    {
-        src: france.src,
-        code: 'fr',
+        code: 'en',
     },
 ];
 
@@ -32,9 +29,10 @@ function Languages({ backgroundColor }) {
         setFlag(selectedFlag);
     }
 
-    function handleFlagSelection(selectedFlag) {
+    async function handleLanguageSelection(flagOption) {
+        await i18n.changeLanguage(flagOption.code);
         setShowOptions(false);
-        updateFlag(selectedFlag);
+        updateFlag(flagOption);
     }
 
     return (
@@ -52,7 +50,7 @@ function Languages({ backgroundColor }) {
                 {flags.map((flagOption) => (
                     <button
                         key={flagOption.code}
-                        onClick={() => handleFlagSelection(flagOption)}
+                        onClick={() => handleLanguageSelection(flagOption)}
                     >
                         <img
                             src={flagOption.src}
