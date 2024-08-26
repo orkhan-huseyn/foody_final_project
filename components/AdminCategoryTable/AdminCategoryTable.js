@@ -17,8 +17,6 @@ const CategoryTable = () => {
     const [categoryImg, setCategoryImg] = useState(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-    console.log('rest');
-
     // Requests
 
     const handleSubmit = async () => {

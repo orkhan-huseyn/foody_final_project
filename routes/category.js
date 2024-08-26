@@ -9,7 +9,7 @@ import { response } from "utils/response";
 export async function handlerCategoryGET(req, res, col) {
   try {
     const data = await getAllData(col);
-
+    
     res.status(200).json(response(data));
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
@@ -24,7 +24,6 @@ export async function handlerCategoryGETID(req, res, col) {
 
     res.status(200).json(response(data));
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Something went wrong" });
   }
 }
@@ -43,7 +42,6 @@ export async function handlerCategoryPOST(req, res, col) {
     const data = await addData(col, category);
     res.status(201).json(data);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Something went wrong" });
   }
 }

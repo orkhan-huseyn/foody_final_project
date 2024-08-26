@@ -11,11 +11,9 @@ import HeaderNavbar from 'components/HeaderNavbar/HeaderNavbar';
 import Languages from '../Languages/Languages';
 
 function Header() {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [showNavbar, setShowNavbar] = useState(false);
     const pathname = usePathname();
-
-    console.log(i18n);
 
     return (
         <header className={styles.headerContainer}>
