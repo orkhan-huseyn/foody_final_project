@@ -5,8 +5,10 @@ import register from '../../assets/images/register/register.svg';
 import { FaRegEye } from 'react-icons/fa';
 
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 function UserRegister() {
+    const { t } = useTranslation();
     return (
         <div className={styles.container}>
             <div className={styles.registerContainer}>
@@ -15,49 +17,49 @@ function UserRegister() {
                 </div>
                 <div className={styles.formContainer}>
                     <div className={styles.linkContainer}>
-                        <Link href="/client/login">Login</Link>
+                        <Link href="/client/login">{t('login')}</Link>
                         <Link className={styles.active} href="/client/register">
-                            Register
+                            {t('register')}
                         </Link>
                     </div>
                     <form className={styles.form}>
                         <div className={styles.formControl}>
-                            <label htmlFor="fullname">Full name</label>
+                            <label htmlFor="fullname">{t('fullname')}</label>
                             <input
                                 type="text"
                                 id="fullname"
-                                placeholder="fullname"
+                                placeholder={t('fullnameplaceholder')}
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label htmlFor="username">Username</label>
+                            <label htmlFor="username">{t('username')}</label>
                             <input
                                 type="text"
                                 id="username"
-                                placeholder="username"
+                                placeholder={t('placeholderusername')}
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{t('email')}</label>
                             <input
                                 type="email"
                                 id="email"
-                                placeholder="user@mail.ru"
+                                placeholder={t('emailplaceholder')}
                             />
                         </div>
                         <div className={styles.formControl}>
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">{t('password')}</label>
                             <div className={styles.inputContainer}>
                                 <input
                                     type="password"
                                     id="password"
-                                    placeholder="password"
+                                    placeholder={t('placeholderpassword')}
                                 />
                                 <FaRegEye className={styles.faEye} />
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <button>Register</button>
+                            <button>{t('register')}</button>
                         </div>
                     </form>
                 </div>

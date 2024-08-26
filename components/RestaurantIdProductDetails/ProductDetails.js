@@ -1,7 +1,11 @@
 import styles from './ProductDetails.module.css';
+
+import { useTranslation } from 'react-i18next';
+
 import { CiCirclePlus } from 'react-icons/ci';
 
 function ProductDetails({ detail }) {
+    const { t } = useTranslation();
     return (
         <div className={styles.productsDetails}>
             <div className={styles.left}>
@@ -13,7 +17,7 @@ function ProductDetails({ detail }) {
             </div>
             <div className={styles.right}>
                 <div>
-                    <span>From</span>
+                    <span>{t('from')}</span>
                     <span>{detail.price}</span>
                 </div>
                 <button>

@@ -17,12 +17,14 @@ const CategoryTable = () => {
     const [categoryImg, setCategoryImg] = useState(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
+    console.log('rest');
+
     // Requests
 
     const handleSubmit = async () => {
         const data = {
-            name,
-            slug,
+            name: 'hello',
+            slug: 'World',
             img_url:
                 'https://t3.ftcdn.net/jpg/06/27/23/56/360_F_627235669_iz0O2leKYRzjxAKdFP7odpp9eCOZREtN.jpg',
         };
@@ -42,6 +44,8 @@ const CategoryTable = () => {
             } catch (error) {
                 console.error('Error:', error);
             }
+
+            fetchCategories();
             resetForm();
         } else {
             //POST REQUEST
@@ -62,18 +66,18 @@ const CategoryTable = () => {
 
     // GET REQUEST
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await axios.get(
-                    'http://localhost:3000/api/category'
-                );
-                setCategories(response.data.result.data);
-            } catch (error) {
-                console.error('Error', error);
-            }
-        };
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:3000/api/category'
+            );
+            setCategories(response.data.result.data);
+        } catch (error) {
+            console.error('Error', error);
+        }
+    };
 
+    useEffect(() => {
         fetchCategories();
     }, []);
 

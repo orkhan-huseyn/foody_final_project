@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { RiMenu2Fill } from 'react-icons/ri';
 
@@ -10,8 +11,11 @@ import HeaderNavbar from 'components/HeaderNavbar/HeaderNavbar';
 import Languages from '../Languages/Languages';
 
 function Header() {
+    const { t, i18n } = useTranslation();
     const [showNavbar, setShowNavbar] = useState(false);
     const pathname = usePathname();
+
+    console.log(i18n);
 
     return (
         <header className={styles.headerContainer}>
@@ -29,7 +33,7 @@ function Header() {
                     href="/"
                     className={pathname === '/' ? `${styles.active}` : ''}
                 >
-                    Home
+                    {t('home')}
                 </Link>
                 <Link
                     href="/client/restaurants"
@@ -39,7 +43,7 @@ function Header() {
                             : ''
                     }
                 >
-                    Restaurants
+                    {t('restaurants')}
                 </Link>
                 <Link
                     href="/client/about-us"
@@ -49,7 +53,7 @@ function Header() {
                             : ''
                     }
                 >
-                    About Us
+                    {t('about')}
                 </Link>
                 <Link
                     href="/client/howitworks"
@@ -59,7 +63,7 @@ function Header() {
                             : ''
                     }
                 >
-                    How it works
+                    {t('howitworks')}
                 </Link>
                 <Link
                     href="/client/faqs"
@@ -69,15 +73,15 @@ function Header() {
                             : ''
                     }
                 >
-                    FAQs
+                    {t('faqs')}
                 </Link>
             </nav>
 
             <div className={styles.inputContainer}>
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder={t('search')} />
                 <Languages />
                 <div className={styles.buttonContainer}>
-                    <Link href="/client/login">Sign up</Link>
+                    <Link href="/client/login">{t('signup')}</Link>
                 </div>
             </div>
 

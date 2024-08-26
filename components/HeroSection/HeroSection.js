@@ -1,6 +1,7 @@
 import styles from './Hero.module.css';
 
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 import heroBurger from '../../assets/images/hero/hero-burger.png';
 import heroPizza from '../../assets/images/hero/hero-pizza.svg';
@@ -9,6 +10,7 @@ import heroCheesBurger from '../../assets/images/hero/hero-cheesburger.svg';
 
 import { motion } from 'framer-motion';
 const HeroSection = () => {
+    const { t } = useTranslation();
     return (
         <section className={styles.heroContainer}>
             <motion.div
@@ -21,25 +23,21 @@ const HeroSection = () => {
                 }}
                 className={styles.heroContent}
             >
-                <h1>Our Food site makes it easy to find local food</h1>
-                <p>
-                    Lorem ipsum is placeholder text commonly used in the
-                    graphic, print, and publishing industries for previewing
-                    layouts and visual mockups.
-                </p>
+                <h1>{t('herotitle')}</h1>
+                <p>{t('herodescription')}</p>
 
                 <div className={styles.heroButtons}>
                     <Link
                         href="/client/register"
                         className={`${styles.heroBtn} ${styles.heroRegisterBtn}`}
                     >
-                        Register
+                        {t('register')}
                     </Link>
                     <Link
                         href="/client/orders"
                         className={`${styles.heroBtn} ${styles.heroOrderBtn}`}
                     >
-                        Order Now
+                        {t('ordernow')}
                     </Link>
                 </div>
             </motion.div>

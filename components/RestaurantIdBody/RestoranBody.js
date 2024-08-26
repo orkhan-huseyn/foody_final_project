@@ -8,8 +8,8 @@ function RestoranBody({ showBasket, handleShowBasket, setShowBasket }) {
     return (
         <div className={styles.container}>
             <ProductsList handleShowBasket={handleShowBasket} />
-            {/* <EmptyBasket showBasket={showBasket} setShowBasket={setShowBasket} /> */}
-            <Basket showBasket={showBasket} setShowBasket={setShowBasket} />
+            <EmptyBasket showBasket={showBasket} setShowBasket={setShowBasket} />
+            {/* <Basket showBasket={showBasket} setShowBasket={setShowBasket} /> */}
         </div>
     );
 }

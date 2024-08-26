@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import UserProfileLayout from 'components/UserProfileLayout/UserProfileLayout';
 import Layout from 'components/RootLayout/Layout';
-import OrderComponent from 'components/Orders/orders'; 
+import OrderComponent from 'components/UserOrders/orders'; 
 
 function index() {
     return (

@@ -1,6 +1,7 @@
 import styles from './HowItWorks.module.css';
 
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 import LargeYellow from '../../assets/images/howitworks/largesvg1.svg';
 import LargeDelivery from '../../assets/images/howitworks/largesvg2.svg';
@@ -8,6 +9,7 @@ import SmallYellow from '../../assets/images/howitworks/smallsvg1.svg';
 import SmallDelivery from '../../assets/images/howitworks/largesvg2.svg';
 
 function HowItWorks() {
+    const { t } = useTranslation();
     return (
         <motion.div
             className={styles.container}
@@ -20,21 +22,11 @@ function HowItWorks() {
             }}
         >
             <div className={styles.howItWorksTitle}>
-                <h1>How it works</h1>
+                <h1>{t('howitworks')}</h1>
             </div>
 
             <div className={styles.paragraph}>
-                <p>
-                    Delivery may be extended during sale periods. Please refer
-                    to the checkout page for an updated estimate for your
-                    location. Kindly note that once you have placed an order, it
-                    is no longer possible to modify your order. Taxes and duties
-                    are included in all product prices.It is possible to place
-                    an order with shipment to a different address than your home
-                    or billing address when paying with a credit card. Please
-                    note that Klarna payments require that your order is shipped
-                    to your registered home address.
-                </p>
+                <p>{t('howitworksdesc')}</p>
             </div>
 
             <div className={styles.imageContainerLarge}>

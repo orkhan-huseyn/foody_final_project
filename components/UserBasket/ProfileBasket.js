@@ -1,7 +1,9 @@
-import BasketDetails from 'components/BasketDetails/BasketDetails';
 import styles from './ProfileBasket.module.css';
 
+import BasketDetails from 'components/BasketDetails/BasketDetails';
+
 import { IoBasketOutline } from 'react-icons/io5';
+import { useTranslation } from 'react-i18next';
 
 import pizza from '../../assets/images/restaurant-id/pizza.svg';
 import coffe from '../../assets/images/restaurant-id/coffe.svg';
@@ -41,14 +43,15 @@ const details = [
 ];
 
 function ProfileBasket() {
+    const { t } = useTranslation();
     return (
         <div className={styles.container}>
-            <h4 className={styles.title}>Your Basket</h4>
+            <h4 className={styles.title}>{t('yourbasket')}</h4>
             <span className={styles.items}>
                 <IoBasketOutline
                     style={{ color: '#D63626', fontSize: '22px' }}
                 />{' '}
-                3 Items
+                3 {t('items')}
             </span>
             <div>
                 {details.map((detail, i) => {

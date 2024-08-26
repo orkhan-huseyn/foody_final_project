@@ -8,6 +8,7 @@ import coffe from '../../assets/images/restaurant-id/coffe.svg';
 import ProductDetails from '../RestaurantIdProductDetails/ProductDetails';
 
 import { IoBasketOutline } from 'react-icons/io5';
+import { useTranslation } from 'react-i18next';
 
 const details = [
     {
@@ -57,16 +58,17 @@ const details = [
 ];
 
 function ProductsList({ handleShowBasket }) {
+    const { t } = useTranslation();
     return (
         <div className={styles.productsContainer}>
-            <h3>Products</h3>
+            <h3>{t('products')}</h3>
             {details.map((detail, index) => {
                 return <ProductDetails key={index} detail={detail} />;
             })}
             <div className={styles.itemsBtn}>
                 <button onClick={handleShowBasket} className={styles.button}>
                     <span>
-                        <IoBasketOutline size={'24px'} /> 3 Items
+                        <IoBasketOutline size={'24px'} /> 3 {t('items')}
                     </span>
                     <span className={styles.price}>$37.40</span>
                 </button>
