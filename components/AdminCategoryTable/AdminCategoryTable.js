@@ -8,27 +8,29 @@ import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
 
 import { FaPencil } from 'react-icons/fa6';
 import { MdOutlineDelete } from 'react-icons/md';
+
 const CategoryTable = () => {
     const [categories, setCategories] = useState([]);
-    const [showForm, setShowForm] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
     const [name, setName] = useState('');
     const [slug, setSlug] = useState('');
-    const [categoryImg, setCategoryImg] = useState(null);
+    const [selectedImage, setSelectedImage] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+    const [showForm, setShowForm] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     // Requests
 
-    const handleSubmit = async () => {
+    const handleCategorySubmit = async () => {
         const data = {
-            name: 'hello',
-            slug: 'World',
-            img_url:
-                'https://t3.ftcdn.net/jpg/06/27/23/56/360_F_627235669_iz0O2leKYRzjxAKdFP7odpp9eCOZREtN.jpg',
+            name,
+            slug,
+            img_url: selectedImage,
         };
-        if (isEditing) {
-            //PUT REQUEST
-            try {
+
+        try {
+            if (isEditing) {
+                //PUT REQUEST
                 await axios.put(
                     `http://localhost:3000/api/category/${selectedCategoryId}`,
                     data,
@@ -38,28 +40,23 @@ const CategoryTable = () => {
                         },
                     }
                 );
-                resetForm();
-            } catch (error) {
-                console.error('Error:', error);
-            }
-
-            fetchCategories();
-            resetForm();
-        } else {
-            //POST REQUEST
-            try {
+            } else {
+                //POST REQUEST
                 await axios.post('http://localhost:3000/api/category', data, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 });
-                resetForm();
-            } catch (error) {
-                console.error('Error:', error);
             }
-            resetForm();
+        } catch (error) {
+            console.log(error);
+
+            setErrorMessage(error.response.data);
         }
+
+        fetchCategories();
         setShowForm(false);
+        resetForm();
     };
 
     // GET REQUEST
@@ -69,9 +66,10 @@ const CategoryTable = () => {
             const response = await axios.get(
                 'http://localhost:3000/api/category'
             );
-            setCategories(response.data.result.data);
+            const result = response.data.result.data;
+            setCategories(result);
         } catch (error) {
-            console.error('Error', error);
+            setErrorMessage(error.message);
         }
     };
 
@@ -84,21 +82,16 @@ const CategoryTable = () => {
     const handleDeleteCategory = async (id) => {
         try {
             await axios.delete(`http://localhost:3000/api/category/${id}`);
-            const updatedCategories = categories.filter(
-                (category) => category.id !== id
-            );
-            setCategories(updatedCategories);
+            fetchCategories();
         } catch (error) {
-            console.error('Error', error);
+            setErrorMessage(error.message);
         }
     };
 
     // Toggle form component
 
-    const handleOpenForm = (isEdit, id) => {
-        setIsEditing(isEdit);
+    const handleOpenForm = () => {
         setShowForm(true);
-        setSelectedCategoryId(id);
     };
 
     const handleCloseForm = () => {
@@ -110,12 +103,35 @@ const CategoryTable = () => {
         resetForm();
     };
 
+    const handleAddCategory = () => {
+        setIsEditing(false);
+        handleOpenForm();
+        resetForm();
+    };
+
+    const handleEditCategory = (detail) => {
+        handleOpenForm();
+        setIsEditing(true);
+        setSelectedCategoryId(detail.id);
+        setName(detail.name);
+        setSlug(detail.slug);
+        setSelectedImage(detail.img_url);
+    };
+
     // Reset form
 
     const resetForm = () => {
         setName('');
         setSlug('');
+        setSelectedImage('');
     };
+
+    // Reset error
+
+    function resetError() {
+        setErrorMessage('');
+        fetchCategories();
+    }
 
     // Create category header
 
@@ -126,14 +142,18 @@ const CategoryTable = () => {
         hasActionButton: true,
     };
 
+    // ADD/EDIT FORM DETAILS
+
     const CategoryFields = {
         title: isEditing ? 'Edit Category' : 'Add Category',
         informationTitle: isEditing
             ? 'Edit your Category information'
             : 'Add your Category information',
-        handleSubmit,
+        handleSubmit: handleCategorySubmit,
         handleCancelForm,
-        setCategoryImg,
+        selectedImage,
+        setSelectedImage,
+        isEditing,
         informations: [
             {
                 label: 'Name',
@@ -154,11 +174,22 @@ const CategoryTable = () => {
         ],
     };
 
-    return (
+    return errorMessage ? (
+        <div className={styles.errorMessage}>
+            <p>{errorMessage}</p>
+            <button
+                onClick={resetError}
+                type="button"
+                className={styles.errorBtn}
+            >
+                Yenidən cəhd et
+            </button>
+        </div>
+    ) : (
         <>
             <AdminPageHeader
                 headerDetails={headerDetails}
-                handleOpenForm={handleOpenForm}
+                handleAddCategory={handleAddCategory}
             />
             <div className={styles.tableContainer}>
                 <table className={styles.table}>
@@ -185,7 +216,7 @@ const CategoryTable = () => {
                                     <div>
                                         <FaPencil
                                             onClick={() =>
-                                                handleOpenForm(true, detail.id)
+                                                handleEditCategory(detail)
                                             }
                                             className={styles.editIcon}
                                         />
