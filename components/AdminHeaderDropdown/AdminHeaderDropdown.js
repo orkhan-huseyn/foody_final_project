@@ -1,33 +1,41 @@
 import styles from './AdminHeaderDropdown.module.css';
-
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
-const options = [
-    {
-        text: 'Restaurant 1',
-    },
-    {
-        text: 'Restaurant 2',
-    },
-    {
-        text: 'Restaurant 3',
-    },
-];
-
-function AdminHeaderDropdown() {
+function AdminHeaderDropdown({ dropdownOptions, setRestaurants, restaurants }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState('Select an option');
+    const [selectedId, setSelectedId] = useState('');
+    const [originalRestaurants, setOriginalRestaurants] = useState([]);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        if (restaurants?.length && !originalRestaurants.length) {
+            setOriginalRestaurants(restaurants);
+        }
+    }, [originalRestaurants, restaurants]);
+
+    useEffect(() => {
+        if (selectedId === '') {
+            setRestaurants(originalRestaurants);
+        } else if (originalRestaurants.length) {
+            const filteredRestaurants = originalRestaurants.filter(
+                (restaurant) => selectedId === restaurant.category_id
+            );
+            setRestaurants(filteredRestaurants);
+        }
+    }, [selectedId, originalRestaurants, setRestaurants]);
+
     const handleOptionClick = (option) => {
-        setSelectedOption(option);
+        setSelectedOption(option.name);
+        setSelectedId(option.id || '');
         setIsOpen(false);
     };
+
+    const optionsWithAll = [{ name: 'All', id: '' }, ...dropdownOptions];
 
     return (
         <div className={styles.dropdownContainer}>
@@ -42,13 +50,13 @@ function AdminHeaderDropdown() {
 
             {isOpen && (
                 <ul className={styles.dropdownItems}>
-                    {options.map((option, i) => (
+                    {optionsWithAll.map((option, i) => (
                         <li
                             key={i}
                             className={styles.item}
-                            onClick={() => handleOptionClick(option.text)}
+                            onClick={() => handleOptionClick(option)}
                         >
-                            {option.text}
+                            {option.name}
                         </li>
                     ))}
                 </ul>

@@ -4,25 +4,37 @@ import AdminHeaderDropdown from 'components/AdminHeaderDropdown/AdminHeaderDropd
 
 import { FaPlus } from 'react-icons/fa6';
 
-function AdminPageHeader({ headerDetails, handleAddCategory }) {
-    const { headerTitle, actionButtonLabel, hasDropdown, hasActionButton } =
+function AdminPageHeader({
+    headerDetails,
+    handleAdd,
+    dropdownOptions,
+    setRestaurants,
+    restaurants,
+}) {
+    const { headerTitle, actionButtonName, hasDropdown, hasActionButton } =
         headerDetails;
 
     return (
         <div className={styles.header}>
             <span className={styles.headerTitle}>{headerTitle}</span>
-
             <div className={styles.right}>
-                {hasDropdown ? <AdminHeaderDropdown /> : ''}
-
+                {hasDropdown ? (
+                    <AdminHeaderDropdown
+                        dropdownOptions={dropdownOptions}
+                        setRestaurants={setRestaurants}
+                        restaurants={restaurants}
+                    />
+                ) : (
+                    ''
+                )}
                 {hasActionButton ? (
                     <button
                         className={styles.addProductBtn}
-                        onClick={() => handleAddCategory()}
+                        onClick={() => handleAdd()}
                     >
                         <FaPlus className={styles.plusIcon} />
                         <span className={styles.buttonText}>
-                            {actionButtonLabel}
+                            {actionButtonName}
                         </span>
                     </button>
                 ) : (

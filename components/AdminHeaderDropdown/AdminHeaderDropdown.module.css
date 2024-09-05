@@ -1,6 +1,7 @@
 .dropdownContainer {
     position: relative;
     width: 170px;
+    z-index: 1;
 }
 
 .toggleBtn {

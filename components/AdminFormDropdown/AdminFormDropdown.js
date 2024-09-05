@@ -4,19 +4,18 @@ import { useState } from 'react';
 
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
-const options = ['Restaurant 1', 'Restaurant 2', 'Restaurant 3'];
-
-function AdminFormDropdown() {
+function AdminFormDropdown({ dropdownOptions, setId }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
     const handleOptionClick = (option) => {
-        setSelectedOption(option);
+        setSelectedOption(option.name);
         setIsOpen(false);
+        setId(option.id);
     };
 
     return (
@@ -36,13 +35,13 @@ function AdminFormDropdown() {
 
             {isOpen && (
                 <ul className={styles.dropdownItems}>
-                    {options.map((option, i) => (
+                    {dropdownOptions.map((option, i) => (
                         <li
                             key={i}
                             className={styles.item}
                             onClick={() => handleOptionClick(option)}
                         >
-                            {option}
+                            {option.name}
                         </li>
                     ))}
                 </ul>
