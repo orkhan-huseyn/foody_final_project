@@ -1,135 +1,285 @@
-import React, { useState, useEffect } from 'react';
 import styles from './AdminRestaurantsCart.module.css';
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
+import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
-import Link from 'next/link';
-const restaurantsData = [
-    {
-        id: 1,
-        name: "Papa John's",
-        type: 'Pizza',
-        logo: 'https://s3-alpha-sig.figma.com/img/b138/e7ff/811a23c52160b70e9e6dbdc802b5fe89?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DAD3o7v7K4oI42JZRN1gTNjAYXU-B3YR9VmWH-URJoXxlnTZRDkVb4mur1xEwWW5CbjVY2i3y5gEJti8DIA6Bk6AaXqqMsUZwOh5EJyqalC3i0N~aDYUocccZbLd4G9WuJj~fWyVfPt3JFuyFZ4dwRn8UU0ame42a4XWvr~jA0dCSWr9UKsjSpMh~KaBazPt3RtkVwXLhMgw4twEALtd4QHx-lmJsDQsI5sbnpXAmEhRwXcqbzeXCo63ySqEHYHbypfh0nrlMNFRxPI-Dz1Nfhjpe7DDf3ng6Pby1imhVz-iwlqSlEUaC1R29rB4UxgLEFqRfT-Ou-ANiJYgS2L3ng__',
-    },
-    {
-        id: 2,
-        name: 'Burger King',
-        type: 'Fast Food',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-    {
-        id: 3,
-        name: "Papa John's",
-        type: 'Pizza',
-        logo: 'https://s3-alpha-sig.figma.com/img/b138/e7ff/811a23c52160b70e9e6dbdc802b5fe89?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DAD3o7v7K4oI42JZRN1gTNjAYXU-B3YR9VmWH-URJoXxlnTZRDkVb4mur1xEwWW5CbjVY2i3y5gEJti8DIA6Bk6AaXqqMsUZwOh5EJyqalC3i0N~aDYUocccZbLd4G9WuJj~fWyVfPt3JFuyFZ4dwRn8UU0ame42a4XWvr~jA0dCSWr9UKsjSpMh~KaBazPt3RtkVwXLhMgw4twEALtd4QHx-lmJsDQsI5sbnpXAmEhRwXcqbzeXCo63ySqEHYHbypfh0nrlMNFRxPI-Dz1Nfhjpe7DDf3ng6Pby1imhVz-iwlqSlEUaC1R29rB4UxgLEFqRfT-Ou-ANiJYgS2L3ng__',
-    },
-    {
-        id: 4,
-        name: 'Burger King',
-        type: 'Fast Food',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-    {
-        id: 5,
-        name: "Papa John's",
-        type: 'Pizza',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-    {
-        id: 6,
-        name: 'Burger King',
-        type: 'Fast Food',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-    {
-        id: 7,
-        name: "Papa John's",
-        type: 'Pizza',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-    {
-        id: 8,
-        name: 'Burger King',
-        type: 'Fast Food',
-        logo: 'https://s3-alpha-sig.figma.com/img/1e0f/7e1a/a96e84e880784ee6484f8f15ff1a41ed?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OzS7pC5AmK129LKGIbtgw1beELZWoQApwRQy2e08jp2odzNIN2W4XvKo8A02fHzyaPgm1rQmDm4jh97EBX6HvaNeT-krzJhUSALROdPWrW-KhzAJDKf9~9ncaCIbp6QPsR1~TbQPLXtUUFqrQvV~QgSiKIvNZNiWL7F8xgCvqkzO74W-L04Sfzb0rQOaNOsBZZ5E2-Q2d9ngZX5wENGXIY2sCDbgPBuZMKcwvgSGwnf9temsfswaRj4hjQB9CB7Cnj9ojQTT4CbFe~bW7T20eFlWPMqH9iqoTKfyiNrW2P-3eO57JZhnSi5FrgjMsmHaTL7M4Maz-brsDKYP1dlRlQ__',
-    },
-];
+
 function AdminRestaurantsCart() {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [isResponsive, setIsResponsive] = useState(false);
-    const cardsPerPage = 6;
-    useEffect(() => {
-        const handleResize = () => {
-            setIsResponsive(window.innerWidth <= 320);
+    const [restaurants, setRestaurants] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [showForm, setShowForm] = useState(false);
+    const [name, setName] = useState('');
+    const [cuisine, setCuisine] = useState('');
+    const [deliveryPrice, setDeliveryPrice] = useState('');
+    const [deliveryMin, setDeliveryMin] = useState('');
+    const [address, setAddress] = useState('');
+    const [selectedRestaurantsImage, setSelectedRestaurantsImage] =
+        useState('');
+    const [categoryId, setCategoryId] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [selectedRestaurantId, setSelectedRestaurantId] = useState(null);
+
+    // Requests
+
+    const handleRestaurantsSubmit = async () => {
+        const data = {
+            name,
+            category_id: categoryId,
+            img_url: selectedRestaurantsImage,
+            cuisine,
+            address,
+            delivery_min: deliveryMin,
+            delivery_price: deliveryPrice,
+            categoryName: 'burger',
         };
+        try {
+            if (isEditing) {
+                //PUT REQUEST
+                await axios.put(
+                    `http://localhost:3000/api/restaurants/${selectedRestaurantId}`,
+                    data,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+            } else {
+                //POST REQUEST
+                await axios.post(
+                    'http://localhost:3000/api/restaurants',
+                    data,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+        fetchRestaurants();
+        setShowForm(false);
+        resetForm();
+    };
 
-        handleResize(); 
-        window.addEventListener('resize', handleResize);
+    // GET
 
-        return () => window.removeEventListener('resize', handleResize);
+    const fetchRestaurants = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:3000/api/restaurants'
+            );
+            const result = response.data.result.data;
+            setRestaurants(result);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchRestaurants();
     }, []);
-    const indexOfLastCard = currentPage * cardsPerPage;
-    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    const currentCards = restaurantsData.slice(indexOfFirstCard, indexOfLastCard);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    // CATEGORIES DATA
+
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:3000/api/category'
+            );
+            const result = response.data.result.data;
+            setCategories(result);
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    // DELETE
+
+    const handleDeleteRestaurants = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/api/restaurants/${id}`);
+            fetchRestaurants();
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    // Toggle form component
+
+    const handleOpenForm = () => {
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+    };
+
+    const handleCancelForm = () => {
+        setShowForm(false);
+        resetForm();
+    };
+
+    const handleAddRestaurants = () => {
+        setIsEditing(false);
+        handleOpenForm();
+        resetForm();
+    };
+
+    const handleEditRestaurants = (restaurant) => {
+        handleOpenForm();
+        setIsEditing(true);
+        setSelectedRestaurantId(restaurant.id);
+        setName(restaurant.name);
+        setCuisine(restaurant.cuisine);
+        setAddress(restaurant.address);
+        setDeliveryPrice(restaurant.delivery_price);
+        setDeliveryMin(restaurant.delivery_min);
+        setSelectedRestaurantsImage(restaurant.img_url);
+    };
+
+    // Reset form
+
+    const resetForm = () => {
+        setName('');
+        setCuisine('');
+        setSelectedRestaurantsImage('');
+        setDeliveryPrice('');
+        setDeliveryMin('');
+        setAddress('');
+        setCategoryId('');
+    };
+
+    //  Create restaurants header
+
+    const headerDetails = {
+        headerTitle: 'Restaurants',
+        hasActionButton: true,
+        actionButtonName: 'Add restaurant',
+        hasDropdown: true,
+    };
+
+    // ADD/EDIT FORM DETAILS
+
+    const RestaurantsFields = {
+        title: isEditing ? 'Edit Restaurants' : 'Add Restaurants',
+        informationTitle: isEditing
+            ? 'Edit your Restaurants information'
+            : 'Add your Restaurants information',
+        handleSubmit: handleRestaurantsSubmit,
+        submitBtnName: isEditing ? 'Update Restaurant' : 'Create Restaurant',
+        selectedImage: selectedRestaurantsImage,
+        setSelectedImage: setSelectedRestaurantsImage,
+        dropdownOptions: categories,
+        setId: setCategoryId,
+        handleCancelForm,
+        informations: [
+            {
+                label: 'Name',
+                type: 'text',
+                value: name,
+                id: 'name',
+                placeholder: 'Mc Donald`s',
+                onChange: (e) => setName(e.target.value),
+            },
+            {
+                label: 'Cuisine',
+                type: 'textarea',
+                value: cuisine,
+                id: 'cuisine',
+                placeholder: 'Fast Food , Drink, Ice Cream, Sea Food',
+                onChange: (e) => setCuisine(e.target.value),
+            },
+            {
+                label: 'Delivery Price $',
+                type: 'number',
+                value: deliveryPrice,
+                id: 'deliveryPrice',
+                placeholder: '0',
+                onChange: (e) => setDeliveryPrice(Number(e.target.value)),
+            },
+            {
+                label: 'Delivery Min',
+                type: 'number',
+                value: deliveryMin,
+                id: 'deliveryMin',
+                placeholder: '0',
+                onChange: (e) => setDeliveryMin(Number(e.target.value)),
+            },
+            {
+                label: 'Address',
+                type: 'text',
+                value: address,
+                id: 'address',
+                placeholder: 'Nizami street 45. Baku, Azerbaijan.',
+                onChange: (e) => setAddress(e.target.value),
+            },
+            {
+                label: 'Category',
+                type: 'dropdown',
+            },
+        ],
+    };
 
     return (
-        <div className={styles.cardsContainer}>
-            {currentCards.map((restaurant) => (
-                <div key={restaurant.id} className={styles.card}>
-                    <div className={styles.cardHeader}>
-                        <Link href="#" legacyBehavior>
-                            <a className={styles.deleteIcon}>
-                                <FaTrashAlt />
-                            </a>
-                        </Link>
+        <>
+            <AdminPageHeader
+                restaurants={restaurants}
+                setRestaurants={setRestaurants}
+                dropdownOptions={categories}
+                headerDetails={headerDetails}
+                handleAdd={handleAddRestaurants}
+            />
+            <div className={styles.cardsContainer}>
+                {restaurants.map((restaurant) => (
+                    <div key={restaurant.id} className={styles.card}>
+                        <div className={styles.cardHeader}>
+                            <FaTrashAlt
+                                onClick={() =>
+                                    handleDeleteRestaurants(restaurant.id)
+                                }
+                                className={styles.deleteIcon}
+                            />
+                        </div>
+                        <div className={styles.logoContainer}>
+                            <img
+                                src={restaurant.img_url}
+                                alt={`${restaurant.name} logo`}
+                                className={styles.logo}
+                            />
+                        </div>
+                        <div className={styles.cardContent}>
+                            <h3>{restaurant.name}</h3>
+                            <p>{restaurant.name.toLowerCase()}</p>
+                        </div>
+                        <div className={styles.cardFooter}>
+                            <FaEdit
+                                onClick={() =>
+                                    handleEditRestaurants(restaurant)
+                                }
+                                className={styles.editIcon}
+                            />
+                        </div>
                     </div>
-                    <div className={styles.logoContainer}>
-                        <img src={restaurant.logo} alt={`${restaurant.name} logo`} className={styles.logo} />
-                    </div>
-                    <div className={styles.cardContent}>
-                        <h3>{restaurant.name}</h3>
-                        <p>{restaurant.type}</p>
-                    </div>
-                    <div className={styles.cardFooter}>
-                        <Link href="#" legacyBehavior>
-                            <a className={styles.editIcon}>
-                                <FaEdit />
-                            </a>
-                        </Link>
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
 
-            {isResponsive && (
-                <div className={styles.pagination}>
-                    <button
-                        onClick={() => paginate(currentPage > 1 ? currentPage - 1 : currentPage)}
-                        className={styles.pageButton}
-                        disabled={currentPage === 1}
-                    >
-                        {'<'}
-                    </button>
-                    {[...Array(Math.ceil(restaurantsData.length / cardsPerPage))].map((_, i) => (
-                        <button
-                            key={i + 1}
-                            onClick={() => paginate(i + 1)}
-                            className={`${styles.pageButton} ${currentPage === i + 1 ? styles.active : ''}`}
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() =>
-                            paginate(currentPage < Math.ceil(restaurantsData.length / cardsPerPage) ? currentPage + 1 : currentPage)
-                        }
-                        className={styles.pageButton}
-                        disabled={currentPage === Math.ceil(restaurantsData.length / cardsPerPage)}
-                    >
-                        {'>'}
-                    </button>
-                </div>
+            {showForm && (
+                <AdminFormSection
+                    handleCloseForm={handleCloseForm}
+                    fields={RestaurantsFields}
+                />
             )}
-        </div>
+        </>
     );
 }
 

@@ -13,7 +13,7 @@ const CategoryTable = () => {
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState('');
     const [slug, setSlug] = useState('');
-    const [selectedImage, setSelectedImage] = useState('');
+    const [selectedCategoryImage, setSelectedCategoryImage] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +25,7 @@ const CategoryTable = () => {
         const data = {
             name,
             slug,
-            img_url: selectedImage,
+            img_url: selectedCategoryImage,
         };
 
         try {
@@ -49,8 +49,6 @@ const CategoryTable = () => {
                 });
             }
         } catch (error) {
-            console.log(error);
-
             setErrorMessage(error.response.data);
         }
 
@@ -115,7 +113,7 @@ const CategoryTable = () => {
         setSelectedCategoryId(detail.id);
         setName(detail.name);
         setSlug(detail.slug);
-        setSelectedImage(detail.img_url);
+        setSelectedCategoryImage(detail.img_url);
     };
 
     // Reset form
@@ -123,7 +121,7 @@ const CategoryTable = () => {
     const resetForm = () => {
         setName('');
         setSlug('');
-        setSelectedImage('');
+        setSelectedCategoryImage('');
     };
 
     // Reset error
@@ -137,7 +135,7 @@ const CategoryTable = () => {
 
     const headerDetails = {
         headerTitle: 'Category',
-        actionButtonLabel: 'Add Category',
+        actionButtonName: 'Add Category',
         hasDropdown: false,
         hasActionButton: true,
     };
@@ -150,10 +148,10 @@ const CategoryTable = () => {
             ? 'Edit your Category information'
             : 'Add your Category information',
         handleSubmit: handleCategorySubmit,
+        selectedImage: selectedCategoryImage,
+        setSelectedImage: setSelectedCategoryImage,
+        submitBtnName: isEditing ? 'Edit Category' : 'Create Category',
         handleCancelForm,
-        selectedImage,
-        setSelectedImage,
-        isEditing,
         informations: [
             {
                 label: 'Name',
@@ -189,7 +187,7 @@ const CategoryTable = () => {
         <>
             <AdminPageHeader
                 headerDetails={headerDetails}
-                handleAddCategory={handleAddCategory}
+                handleAdd={handleAddCategory}
             />
             <div className={styles.tableContainer}>
                 <table className={styles.table}>

@@ -12,7 +12,9 @@ function AdminFormSection({ handleCloseForm, fields }) {
         handleCancelForm,
         selectedImage,
         setSelectedImage,
-        isEditing,
+        submitBtnName,
+        dropdownOptions,
+        setId,
     } = fields;
 
     const [imagePreview, setImagePreview] = useState(
@@ -91,7 +93,10 @@ function AdminFormSection({ handleCloseForm, fields }) {
                                         {information.label}
                                     </label>
                                     {information.type === 'dropdown' ? (
-                                        <AdminFormDropdown />
+                                        <AdminFormDropdown
+                                            dropdownOptions={dropdownOptions}
+                                            setId={setId}
+                                        />
                                     ) : information.type === 'textarea' ? (
                                         <textarea
                                             rows="4"
@@ -122,9 +127,7 @@ function AdminFormSection({ handleCloseForm, fields }) {
                         <button type="button" onClick={handleCancelForm}>
                             Cancel
                         </button>
-                        <button type="submit">
-                            {isEditing ? 'Edit Category' : 'Create Category'}
-                        </button>
+                        <button type="submit">{submitBtnName}</button>
                     </div>
                 </form>
             </div>
