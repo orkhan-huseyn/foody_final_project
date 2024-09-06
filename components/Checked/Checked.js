@@ -109,5 +109,5 @@ const Checked = () => {
         </div>
     );
 };
-};
+
 export default Checked;
