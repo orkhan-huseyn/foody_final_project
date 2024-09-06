@@ -162,27 +162,30 @@
     line-height: 35px;
     letter-spacing: 3%;
 }
-
-@media (max-width: 768px) {
-    .image img {
-        width: 150px;
+@media (max-width: 450px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
     }
-
-    .checkedTitle h2 {
-        font-size: 26px;
+    
+    .title {
+        order: 1; 
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
     }
-}
-
-@media (max-width: 480px) {
-    .checkedContainer {
-        background-color: #fff;
+    .orderSection {
+        order: 1;
+        width: 100%;
+        margin-bottom: 20px;
     }
-
-    .image img {
-        width: 100px;
+    .checkoutSection {
+        order: 2;
+        width: 100%;
+        
     }
-
-    .checkedTitle h2 {
-        font-size: 22px;
+    .radioGroup {
+        flex-direction: column;
+        gap: 10px;
     }
 }
