@@ -1,0 +1,118 @@
+.dashboardContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+    position: relative;
+    right: 50px;
+    color: #ffffff;
+
+    
+}
+.widget {
+    background-color: #27283C;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; 
+    
+}
+
+.ordersChartContainer {
+    width: 510px;
+    height: 450px;
+    margin-left: 14%;
+    
+}
+.salaryChartContainer {
+    width: 630px;
+    height: 450px;
+}
+
+
+.risksContainer {
+    width: 610px;
+    height: 420px;
+    margin-left: 15%;
+}
+
+.actionItemsContainer {
+    width: 530px;
+    height: 420px;
+    margin-left: 16%;
+}
+
+.widgetTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.risksContainer .widgetTitle{
+    margin-bottom: 30%;
+    
+}
+.actionItemsContainer .widgetTitle{
+    margin-bottom: 35%;
+
+
+}
+.widgetContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+@media (max-width: 690px) {
+    .dashboardContainer {
+        grid-template-columns: 1fr;
+        gap: 20px; 
+        padding: 10px;
+        justify-items: center; 
+        right: 0;
+    }
+
+    .widget {
+        width: 100%; 
+        max-width: 340px; 
+        margin-left: 0; 
+    }
+    .ordersChartContainer {
+        width: 340px; 
+        height: 360px; 
+    }
+
+    .salaryChartContainer {
+        width: 340px; 
+        height: 400px;
+    }
+    .risksContainer, .actionItemsContainer {
+        width: 100%;
+        max-width: 340px; 
+        height: 300px; 
+    }
+
+    .widgetContent {
+        border: none;
+    }
+}
+@media (max-width: 300px) {
+    .widget {
+        width: 100%; 
+        max-width: 290px; 
+        padding: 5px; 
+    }
+    .ordersChartContainer {
+        width: 290px;
+        height: 260px;
+    }
+
+    .salaryChartContainer {
+        width: 290px;
+        height: 360px;
+    }
+    .risksContainer, .actionItemsContainer {
+        width: 100%;
+        max-width: 290px; 
+        height: 270px;
+    }
+}
