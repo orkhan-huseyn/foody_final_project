@@ -35,6 +35,7 @@ function AdminHeaderDropdown({ dropdownOptions, setRestaurants, restaurants }) {
         setIsOpen(false);
     };
 
+
     const optionsWithAll = [{ name: 'All', id: '' }, ...dropdownOptions];
 
     return (
