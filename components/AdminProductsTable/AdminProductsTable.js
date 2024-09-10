@@ -1,65 +1,223 @@
-import React, { useState } from 'react';
 import styles from './ProductsTable.module.css';
+
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
+import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
+
 const AdminProductsTable = () => {
-    const products = [
-        {
-            id: 1,
-            name: 'Marqarita',
-            price: '$16',
-            restaurant: "Papa John's",
-            image: 'https://s3-alpha-sig.figma.com/img/cce6/e78a/d445d897eef4d5a9f184bc4c62d631e4?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gDQzYZkDngtZMNepORGxZTuy5jMEgBEhdpWweh2BIV~kLo0gA9VGJP7mD6xFLheyi-JiADs8mBDoN7gYzzBOlUKhC1T5N9SN0OpDSVKgx14GHDHG4wk19enhhGzXMKFlEaJi1SJFyE~ZX9nUMeI~-KJXIEME4CIkaYqYCKjSQtEJCqJkul~kBsda3SyZ9AaYgCwUjrL0k4ux6eGdQWj~7Bhfbqb6oHBMSr~ySDJPah91YoTr3XgFM6G3EHwgFwlvdxhKNbCj4Tn6pfXfiKykvPPA5TSvjqeQVX1CHqcl7UlUDmUpm62mKtJ86bqAp7WHFWOO5dk0fccZ2DPoFT0H~Q__', 
-        },
-    
-    ];
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 2;
-    const totalPages = Math.ceil(products.length / itemsPerPage);
-    const currentItems = products.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
-    const handlePreviousPage = () => {
-        setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
+    const [products, setProducts] = useState([]);
+    const [restaurants, setRestaurants] = useState([]);
+    const [showForm, setShowForm] = useState(false);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [selectedProductImage, setSelectedProductImage] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const [selectedProductId, setSelectedProductId] = useState(null);
+
+    const handleProductsSubmit = async () => {
+        const data = {
+            name,
+            description,
+            img_url: selectedProductImage,
+            rest_id: 'fsdgdsgdfgdf',
+            price,
+        };
+        try {
+            await axios.put(
+                `http://localhost:3000/api/products/${selectedProductId}`,
+                data,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+        } catch (error) {
+            console.log(error.message);
+        }
+        fetchProducts();
+        setShowForm(false);
+        resetForm();
     };
-    const handleNextPage = () => {
-        setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages));
+
+    // GET
+
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get(
+                'http://localhost:3000/api/products'
+            );
+            const result = response.data.result.data;
+            setProducts(result);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    // GET RESTAURANTS
+
+    const fetchRestaurants = async () => {
+        const response = await axios.get(
+            'http://localhost:3000/api/restaurants'
+        );
+        const result = response.data.result.data;
+        setRestaurants(result);
+    };
+
+    useEffect(() => {
+        fetchRestaurants();
+    }, []);
+    // DELETE
+
+    const handleDeleteProducts = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/api/products/${id}`);
+            fetchProducts();
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    // Toggle form component
+
+    const handleOpenForm = () => {
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+    };
+
+    const handleCancelForm = () => {
+        setShowForm(false);
+        resetForm();
+    };
+
+    const handleEditProducts = (product) => {
+        handleOpenForm();
+        setIsEditing(true);
+        setSelectedProductId(product.id);
+        setName(product.name);
+        setDescription(product.description);
+        setPrice(product.price);
+        setSelectedProductImage(product.img_url);
+    };
+
+    // Reset form
+
+    const resetForm = () => {
+        setName('');
+        setDescription('');
+        setSelectedProductImage('');
+        setPrice('');
+    };
+
+    const headerDetails = {
+        headerTitle: 'Products',
+        hasActionButton: false,
+        hasDropdown: true,
+    };
+
+    const ProductsFields = {
+        title: isEditing ? 'Edit Products' : 'Add Products',
+        informationTitle: isEditing
+            ? 'Edit your Products information'
+            : 'Add your Products information',
+        handleSubmit: handleProductsSubmit,
+        submitBtnName: isEditing ? 'Update Product' : 'Create Product',
+        selectedImage: selectedProductImage,
+        setSelectedImage: setSelectedProductImage,
+        handleCancelForm,
+        informations: [
+            {
+                label: 'Name',
+                type: 'text',
+                value: name,
+                id: 'name',
+                placeholder: 'Margarita',
+                onChange: (e) => setName(e.target.value),
+            },
+            {
+                label: 'Description',
+                type: 'textarea',
+                value: description,
+                id: 'description',
+                placeholder: '16.Description food',
+                onChange: (e) => setDescription(e.target.value),
+            },
+            {
+                label: 'Price',
+                type: 'number',
+                value: price,
+                id: 'price',
+                placeholder: '0',
+                onChange: (e) => setPrice(Number(e.target.value)),
+            },
+            {
+                label: 'Restaurants',
+                type: 'dropdown',
+            },
+        ],
     };
 
     return (
-        <div className={styles.productsContainer}>
-            {currentItems.map((product) => (
-                <div key={product.id} className={styles.productCard}>
-                    <img src={product.image} alt={product.name} className={styles.productImage} />
-                    <div className={styles.productInfo}>
-                        <div>
-                            <h3 className={styles.productName}>{product.name}</h3>
-                            <p className={styles.restaurant}>{product.restaurant}</p>
-                            <span className={styles.price}>{product.price}</span>
-                        </div>
-                        <div className={styles.icons}>
-                            <FaEdit className={styles.icon} />
-                            <FaTrashAlt className={`${styles.icon} ${styles.deleteIcon}`} />
+        <>
+            <AdminPageHeader
+                restaurants={restaurants}
+                dropdownOptions={restaurants}
+                setRestaurants={setRestaurants}
+                headerDetails={headerDetails}
+            />
+
+            <div className={styles.productsContainer}>
+                {products.map((product) => (
+                    <div key={product.id} className={styles.productCard}>
+                        <img
+                            src={product.img_url}
+                            alt={product.name}
+                            className={styles.productImage}
+                        />
+                        <div className={styles.productInfo}>
+                            <div>
+                                <h3 className={styles.productName}>
+                                    {product.name}
+                                </h3>
+                                <p className={styles.restaurant}>Papa John's</p>
+                                <span className={styles.price}>
+                                    ${product.price}
+                                </span>
+                            </div>
+                            <div className={styles.icons}>
+                                <FaEdit
+                                    className={styles.icon}
+                                    onClick={() => handleEditProducts(product)}
+                                />
+                                <FaTrashAlt
+                                    className={`${styles.icon} ${styles.deleteIcon}`}
+                                    onClick={() =>
+                                        handleDeleteProducts(product.id)
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
-            <div className={styles.paginationContainer}>
-                <button
-                    className={`${styles.paginationButton} ${currentPage === 1 && styles.disabled}`}
-                    onClick={handlePreviousPage}
-                >
-                    &#8249;
-                </button>
-                <span className={styles.paginationButton}>{currentPage}</span>
-                <button
-                    className={`${styles.paginationButton} ${currentPage === totalPages && styles.disabled}`}
-                    onClick={handleNextPage}
-                >
-                    &#8250;
-                </button>
+                ))}
             </div>
-        </div>
+            {showForm && (
+                <AdminFormSection
+                    handleCloseForm={handleCloseForm}
+                    fields={ProductsFields}
+                />
+            )}
+        </>
     );
 };
 
