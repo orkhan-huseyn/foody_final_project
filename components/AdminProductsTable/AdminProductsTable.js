@@ -1,6 +1,6 @@
 import styles from './ProductsTable.module.css';
 
-import axios from 'axios';
+import api from '../../api';
 import { useState, useEffect } from 'react';
 
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
@@ -27,15 +27,7 @@ const AdminProductsTable = () => {
             price,
         };
         try {
-            await axios.put(
-                `http://localhost:3000/api/products/${selectedProductId}`,
-                data,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                }
-            );
+            await api.put(`/products/${selectedProductId}`, data);
         } catch (error) {
             console.log(error.message);
         }
@@ -48,9 +40,7 @@ const AdminProductsTable = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get(
-                'http://localhost:3000/api/products'
-            );
+            const response = await api.get('/products');
             const result = response.data.result.data;
             setProducts(result);
         } catch (error) {
@@ -65,9 +55,7 @@ const AdminProductsTable = () => {
     // GET RESTAURANTS
 
     const fetchRestaurants = async () => {
-        const response = await axios.get(
-            'http://localhost:3000/api/restaurants'
-        );
+        const response = await api.get('/restaurants');
         const result = response.data.result.data;
         setRestaurants(result);
     };
@@ -79,7 +67,7 @@ const AdminProductsTable = () => {
 
     const handleDeleteProducts = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/products/${id}`);
+            await api.delete(`/products/${id}`);
             fetchProducts();
         } catch (error) {
             console.log(error.message);
