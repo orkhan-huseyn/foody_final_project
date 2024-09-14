@@ -1,7 +1,7 @@
 import styles from './AdminCategoryTable.module.css';
 
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../api.js';
 
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
@@ -31,22 +31,10 @@ const CategoryTable = () => {
         try {
             if (isEditing) {
                 //PUT REQUEST
-                await axios.put(
-                    `http://localhost:3000/api/category/${selectedCategoryId}`,
-                    data,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
+                await api.put(`/category/${selectedCategoryId}`, data);
             } else {
                 //POST REQUEST
-                await axios.post('http://localhost:3000/api/category', data, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+                await api.post('/category', data);
             }
         } catch (error) {
             setErrorMessage(error.response.data);
@@ -61,9 +49,7 @@ const CategoryTable = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get(
-                'http://localhost:3000/api/category'
-            );
+            const response = await api.get('/category');
             const result = response.data.result.data;
             setCategories(result);
         } catch (error) {
@@ -79,7 +65,7 @@ const CategoryTable = () => {
 
     const handleDeleteCategory = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/category/${id}`);
+            await api.delete(`/category/${id}`);
             fetchCategories();
         } catch (error) {
             setErrorMessage(error.message);

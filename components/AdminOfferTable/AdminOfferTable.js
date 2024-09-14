@@ -3,7 +3,7 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api';
 function AdminOfferTable() {
     const [offers, setOffers] = useState([]);
     const [name, setName] = useState('');
@@ -23,22 +23,10 @@ function AdminOfferTable() {
         try {
             if (isEditing) {
                 //PUT REQUEST
-                await axios.put(
-                    `http://localhost:3000/api/offer/${selectedOfferId}`,
-                    data,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
+                await api.put(`/offer/${selectedOfferId}`, data);
             } else {
                 //POST REQUEST
-                await axios.post('http://localhost:3000/api/offer', data, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+                await api.post('/offer', data);
             }
         } catch (error) {
             console.log(error.message);
@@ -53,7 +41,7 @@ function AdminOfferTable() {
 
     const fetchOffers = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/offer');
+            const response = await api.get('/offer');
             const result = response.data.result.data;
             setOffers(result);
         } catch (error) {
@@ -69,7 +57,7 @@ function AdminOfferTable() {
 
     const handleDeleteOffer = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/offer/${id}`);
+            await api.delete(`/offer/${id}`);
             fetchOffers();
         } catch (error) {
             console.log(error.message);

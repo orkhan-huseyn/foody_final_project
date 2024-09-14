@@ -1,7 +1,7 @@
 import styles from './AdminRestaurantsCart.module.css';
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api';
 
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
@@ -38,26 +38,10 @@ function AdminRestaurantsCart() {
         try {
             if (isEditing) {
                 //PUT REQUEST
-                await axios.put(
-                    `http://localhost:3000/api/restaurants/${selectedRestaurantId}`,
-                    data,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
+                await api.put(`/restaurants/${selectedRestaurantId}`, data);
             } else {
                 //POST REQUEST
-                await axios.post(
-                    'http://localhost:3000/api/restaurants',
-                    data,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
+                await api.post('/restaurants', data);
             }
         } catch (error) {
             console.log(error.message);
@@ -71,9 +55,7 @@ function AdminRestaurantsCart() {
 
     const fetchRestaurants = async () => {
         try {
-            const response = await axios.get(
-                'http://localhost:3000/api/restaurants'
-            );
+            const response = await api.get('/restaurants');
             const result = response.data.result.data;
             setRestaurants(result);
         } catch (error) {
@@ -89,9 +71,7 @@ function AdminRestaurantsCart() {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get(
-                'http://localhost:3000/api/category'
-            );
+            const response = await api.get('/category');
             const result = response.data.result.data;
             setCategories(result);
         } catch (error) {
@@ -107,7 +87,7 @@ function AdminRestaurantsCart() {
 
     const handleDeleteRestaurants = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/restaurants/${id}`);
+            await api.delete(`/restaurants/${id}`);
             fetchRestaurants();
         } catch (error) {
             console.log(error.message);
