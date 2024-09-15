@@ -17,7 +17,7 @@ function UserRegister() {
     const [password, setPassword] = useState('');
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
-    const [color, setColor] = useState('red');
+    const [color, setColor] = useState('');
 
     const router = useRouter();
 

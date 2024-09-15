@@ -1,17 +1,51 @@
 import styles from './UserLogin.module.css';
 
+import api from '../../api';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 import { FaRegEye } from 'react-icons/fa';
+import Notification from '../Notification/Notification';
 
 import loginImage from '../../assets/images/login/client.png';
+import { useState } from 'react';
 
 function Login() {
     const { t } = useTranslation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [show, setShow] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const data = {
+            email,
+            password,
+        };
+
+        try {
+            const response = await api.post('/auth/signin', data);
+            console.log(response);
+            console.log(response.data.user.access_token);
+            const token = response.data.user.access_token;
+            localStorage.setItem('token', token);
+        } catch (error) {
+            setShow(true);
+        }
+        resetForm();
+        setTimeout(() => {
+            setShow(false);
+        }, 3000);
+    };
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
+    };
     return (
         <div className={styles.loginPage}>
-            <form className={styles.loginPageBody}>
+            <form className={styles.loginPageBody} onSubmit={handleSubmit}>
                 <div className={styles.loginPageMain}>
                     <img src={loginImage.src} />
                 </div>
@@ -23,17 +57,21 @@ function Login() {
                         <Link href="/client/register">{t('register')}</Link>
                     </div>
                     <div className={styles.loginPageLoginInputUser}>
-                        <label for="username">{t('username')}</label>
+                        <label for="username">{t('email')}</label>
                         <input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             type="text"
                             id="username"
-                            placeholder={t('placeholderusername')}
+                            placeholder={t('emailplaceholder')}
                         />
                     </div>
                     <div className={styles.loginPageLoginInputPassword}>
                         <label for="password">{t('password')}</label>
                         <div className={styles.inputContainer}>
                             <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 type="password"
                                 id="password"
                                 placeholder={t('placeholderpassword')}
@@ -42,10 +80,15 @@ function Login() {
                         </div>
                     </div>
                     <div className={styles.loginPageLoginButton}>
-                        <button>{t('loginbutton')}</button>
+                        <button type="submit">{t('loginbutton')}</button>
                     </div>
                 </div>
             </form>
+            <Notification
+                message="Şifrə və ya email yanlışdır..."
+                color="red"
+                show={show}
+            />
         </div>
     );
 }
