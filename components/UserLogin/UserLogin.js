@@ -2,6 +2,7 @@ import styles from './UserLogin.module.css';
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 import { FaRegEye } from 'react-icons/fa';
 
@@ -9,6 +10,12 @@ import loginImage from '../../assets/images/login/client.png';
 
 function Login() {
     const { t } = useTranslation();
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className={styles.loginPage}>
             <form className={styles.loginPageBody}>
@@ -34,11 +41,14 @@ function Login() {
                         <label for="password">{t('password')}</label>
                         <div className={styles.inputContainer}>
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 placeholder={t('placeholderpassword')}
                             />
-                            <FaRegEye className={styles.faEye} />
+                            <FaRegEye
+                                className={styles.faEye}
+                                onClick={togglePasswordVisibility}
+                            />
                         </div>
                     </div>
                     <div className={styles.loginPageLoginButton}>
