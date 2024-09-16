@@ -1,6 +1,7 @@
 import styles from './ordersStyles.module.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 
 import { FaEllipsisV } from 'react-icons/fa';
@@ -47,6 +48,14 @@ function Orders() {
     const { t } = useTranslation();
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [deletePopup, setDeletePopup] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.replace('/client/login');
+        }
+    }, []);
 
     const handleShowClick = (product) => {
         setSelectedProduct(product);
@@ -136,15 +145,15 @@ function Orders() {
             {selectedProduct && (
                 <div className={styles.popupOverlay} onClick={handleClosePopup}>
                     <div className={styles.popupContent}>
-                        <h2>{t("productdetails")}</h2>
+                        <h2>{t('productdetails')}</h2>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>{t("image")}</th>
-                                    <th>{t("name")}</th>
-                                    <th>{t("price")} $</th>
-                                    <th>{t("count")}</th>
-                                    <th>{t("amount")}</th>
+                                    <th>{t('image')}</th>
+                                    <th>{t('name')}</th>
+                                    <th>{t('price')} $</th>
+                                    <th>{t('count')}</th>
+                                    <th>{t('amount')}</th>
                                 </tr>
                             </thead>
                             <tbody>

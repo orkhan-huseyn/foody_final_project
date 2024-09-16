@@ -4,16 +4,16 @@ import api from '../../api';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { FaRegEye } from 'react-icons/fa';
 import Notification from '../Notification/Notification';
 
 import loginImage from '../../assets/images/login/client.png';
-import { useState } from 'react';
 
 function Login() {
     const { t } = useTranslation();
-  
+    const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,10 +29,9 @@ function Login() {
 
         try {
             const response = await api.post('/auth/signin', data);
-            console.log(response);
-            console.log(response.data.user.access_token);
             const token = response.data.user.access_token;
             localStorage.setItem('token', token);
+            router.push('/');
         } catch (error) {
             setShow(true);
         }
@@ -47,11 +46,9 @@ function Login() {
         setPassword('');
     };
 
-
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-
 
     return (
         <div className={styles.loginPage}>

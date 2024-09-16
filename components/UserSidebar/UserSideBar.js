@@ -14,6 +14,11 @@ function Sidebar() {
     const router = useRouter();
     const isActive = (path) => router.pathname === path;
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        router.replace('/client/login');
+    };
+
     return (
         <div className={styles.sidebar}>
             <ul>
@@ -62,10 +67,10 @@ function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/client/logout">
+                    <button onClick={handleLogout} className={styles.logoutBtn}>
                         <CiLogout className={styles.icon} />
                         {t('logout')}
-                    </Link>
+                    </button>
                 </li>
             </ul>
         </div>

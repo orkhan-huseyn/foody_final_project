@@ -2,18 +2,28 @@ import styles from './Header.module.css';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { RiMenu2Fill } from 'react-icons/ri';
+import { IoMdBasket } from 'react-icons/io';
 
 import HeaderNavbar from 'components/HeaderNavbar/HeaderNavbar';
 import Languages from '../Languages/Languages';
+import Usermenu from 'components/UserMenu/Usermenu';
 
 function Header() {
     const { t } = useTranslation();
     const [showNavbar, setShowNavbar] = useState(false);
     const pathname = usePathname();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     return (
         <header className={styles.headerContainer}>
@@ -77,9 +87,24 @@ function Header() {
 
             <div className={styles.inputContainer}>
                 <input type="text" placeholder={t('search')} />
-                <Languages />
                 <div className={styles.buttonContainer}>
-                    <Link href="/client/login">{t('signup')}</Link>
+                    <Languages />
+                    {isLoggedIn && (
+                        <Link
+                            className={styles.headerBasketIcon}
+                            href="/client/basket"
+                        >
+                            <span>
+                                <IoMdBasket style={{ fontSize: '25px' }} />
+                            </span>
+                        </Link>
+                    )}
+                    {!isLoggedIn && (
+                        <Link className={styles.signUpBtn} href="/client/login">
+                            {t('signup')}
+                        </Link>
+                    )}
+                    {isLoggedIn && <Usermenu />}
                 </div>
             </div>
 

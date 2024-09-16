@@ -1,5 +1,6 @@
 import styles from './Hero.module.css';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
@@ -11,6 +12,14 @@ import heroCheesBurger from '../../assets/images/hero/hero-cheesburger.svg';
 import { motion } from 'framer-motion';
 const HeroSection = () => {
     const { t } = useTranslation();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
     return (
         <section className={styles.heroContainer}>
             <motion.div
@@ -27,12 +36,14 @@ const HeroSection = () => {
                 <p>{t('herodescription')}</p>
 
                 <div className={styles.heroButtons}>
-                    <Link
-                        href="/client/register"
-                        className={`${styles.heroBtn} ${styles.heroRegisterBtn}`}
-                    >
-                        {t('register')}
-                    </Link>
+                    {!isLoggedIn && (
+                        <Link
+                            href="/client/register"
+                            className={`${styles.heroBtn} ${styles.heroRegisterBtn}`}
+                        >
+                            {t('register')}
+                        </Link>
+                    )}
                     <Link
                         href="/client/orders"
                         className={`${styles.heroBtn} ${styles.heroOrderBtn}`}
