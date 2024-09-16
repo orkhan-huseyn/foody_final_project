@@ -3,6 +3,7 @@ import styles from './UserLogin.module.css';
 import api from '../../api';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 import { FaRegEye } from 'react-icons/fa';
 import Notification from '../Notification/Notification';
@@ -12,6 +13,8 @@ import { useState } from 'react';
 
 function Login() {
     const { t } = useTranslation();
+  
+    const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [show, setShow] = useState(false);
@@ -43,6 +46,13 @@ function Login() {
         setEmail('');
         setPassword('');
     };
+
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+
     return (
         <div className={styles.loginPage}>
             <form className={styles.loginPageBody} onSubmit={handleSubmit}>
@@ -72,11 +82,14 @@ function Login() {
                             <input
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 placeholder={t('placeholderpassword')}
                             />
-                            <FaRegEye className={styles.faEye} />
+                            <FaRegEye
+                                className={styles.faEye}
+                                onClick={togglePasswordVisibility}
+                            />
                         </div>
                     </div>
                     <div className={styles.loginPageLoginButton}>

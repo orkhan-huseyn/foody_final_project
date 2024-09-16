@@ -18,6 +18,11 @@ function UserRegister() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
     const [color, setColor] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const router = useRouter();
 
@@ -109,11 +114,14 @@ function UserRegister() {
                                         setPassword(e.target.value)
                                     }
                                     value={password}
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     id="password"
                                     placeholder={t('placeholderpassword')}
                                 />
-                                <FaRegEye className={styles.faEye} />
+                                <FaRegEye
+                                    className={styles.faEye}
+                                    onClick={togglePasswordVisibility}
+                                />
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
