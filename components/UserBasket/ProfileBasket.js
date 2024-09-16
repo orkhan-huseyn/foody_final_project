@@ -4,6 +4,8 @@ import BasketDetails from 'components/BasketDetails/BasketDetails';
 
 import { IoBasketOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import pizza from '../../assets/images/restaurant-id/pizza.svg';
 import coffe from '../../assets/images/restaurant-id/coffe.svg';
@@ -44,6 +46,14 @@ const details = [
 
 function ProfileBasket() {
     const { t } = useTranslation();
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.replace('/client/login');
+        }
+    }, []);
     return (
         <div className={styles.container}>
             <h4 className={styles.title}>{t('yourbasket')}</h4>

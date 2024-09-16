@@ -87,7 +87,13 @@
     width: 60%;
 }
 
-.buttonContainer a {
+.buttonContainer {
+    display: flex;
+    gap: 15px;
+}
+
+.buttonContainer .signUpBtn,
+.buttonContainer .headerBasketIcon {
     text-decoration: none;
     border: none;
     background-color: #d63626;
@@ -95,6 +101,15 @@
     padding: 12px 24px;
     border-radius: 30px;
     transition: opacity 200ms ease;
+}
+
+.buttonContainer .headerBasketIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
 }
 
 .buttonContainer a:hover {

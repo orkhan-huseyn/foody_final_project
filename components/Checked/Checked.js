@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import styles from './Checked.module.css';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
 
@@ -8,6 +9,15 @@ import React from 'react';
 
 const Checked = () => {
     const [isOrderReceived, setIsOrderReceived] = useState(false);
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.replace('/client/login');
+        }
+    }, []);
 
     const handleCheckoutClick = () => {
         setIsOrderReceived(true);
