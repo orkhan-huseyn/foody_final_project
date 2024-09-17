@@ -37,7 +37,7 @@ function Profile() {
             setContact(userData.phone || '');
             setLoading(false);
         } catch (err) {
-            setError('İstifadəçi məlumatları yüklənmədi');
+            setMessage('İstifadəçi məlumatları yüklənmədi');
             setLoading(false);
         }
     };
