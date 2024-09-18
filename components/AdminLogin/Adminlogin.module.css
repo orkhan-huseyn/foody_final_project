@@ -61,6 +61,7 @@
     height: 40px;
 }
 
+
 .imageBox {
     display: flex;
     justify-content: center;
@@ -74,6 +75,39 @@
     height: auto;
 }
 
+.alertBox {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.9); 
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    animation: fadeInOut 3s ease-in-out; 
+    z-index: 1000; 
+}
+
+@keyframes fadeInOut {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -30%); 
+    }
+    10% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%); 
+    }
+    90% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -30%); 
+    }
+}
 @media (max-width: 768px) {
     .loginBox {
         flex-direction: column;

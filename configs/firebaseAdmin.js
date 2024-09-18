@@ -11,3 +11,4 @@ export const storage = admin.storage();
 export const firestore = admin.firestore();
 
 export default admin;
+

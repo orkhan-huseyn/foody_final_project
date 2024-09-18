@@ -44,7 +44,6 @@ function UserRegister() {
         } catch (error) {
             setMessage('Registration failed!');
             setColor('red');
-
             console.log(error);
         }
 
