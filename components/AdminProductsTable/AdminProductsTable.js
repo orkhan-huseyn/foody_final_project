@@ -14,6 +14,7 @@ const AdminProductsTable = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [restId, setRestId] = useState('');
     const [selectedProductImage, setSelectedProductImage] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState(null);
@@ -23,7 +24,7 @@ const AdminProductsTable = () => {
             name,
             description,
             img_url: selectedProductImage,
-            rest_id: 'fsdgdsgdfgdf',
+            rest_id: restId,
             price,
         };
         try {
@@ -52,6 +53,15 @@ const AdminProductsTable = () => {
         fetchProducts();
     }, []);
 
+    const handleDeleteProducts = async (id) => {
+        try {
+            await api.delete(`/products/${id}`);
+            fetchProducts();
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
     // GET RESTAURANTS
 
     const fetchRestaurants = async () => {
@@ -63,16 +73,6 @@ const AdminProductsTable = () => {
     useEffect(() => {
         fetchRestaurants();
     }, []);
-    // DELETE
-
-    const handleDeleteProducts = async (id) => {
-        try {
-            await api.delete(`/products/${id}`);
-            fetchProducts();
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
 
     // Toggle form component
 
@@ -123,6 +123,8 @@ const AdminProductsTable = () => {
         submitBtnName: isEditing ? 'Update Product' : 'Create Product',
         selectedImage: selectedProductImage,
         setSelectedImage: setSelectedProductImage,
+        dropdownOptions: restaurants,
+        setId: setRestId,
         handleCancelForm,
         informations: [
             {

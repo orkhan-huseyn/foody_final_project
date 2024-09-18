@@ -143,6 +143,12 @@ const resources = {
             delivery: 'Çatdırılma',
             products: 'Məhsullar',
             emptybasket: 'Səbət Boşdur',
+            category: 'Kateqoriya',
+            orders: 'Sifarişlər',
+            history: 'Tarix',
+            offer: 'Təklif',
+            dashboard: 'İdarə paneli',
+            addproduct: "Əlavə et"
         },
     },
 
@@ -283,6 +289,12 @@ const resources = {
             delivery: 'Delivery',
             products: 'Products',
             emptybasket: 'Basket Empty',
+            category: 'Category',
+            orders: 'Orders',
+            history: 'History',
+            offer: 'Offer',
+            dashboard: 'Dashboard',
+            addproduct: 'Add product',
         },
     },
 };

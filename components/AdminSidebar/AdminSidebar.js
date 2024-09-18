@@ -3,6 +3,7 @@ import styles from './AdminSidebar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 import eacamplogo from '../../assets/images/eacamplogo/eacamp.svg';
 
@@ -18,6 +19,7 @@ import { IoIosLogOut, IoIosArrowBack } from 'react-icons/io';
 import { FaClipboardList } from 'react-icons/fa';
 
 function AdminSidebar({ setShowSidebar, showSidebar }) {
+    const { t } = useTranslation();
     const router = useRouter();
     const isActive = (path) => router.pathname === path;
 
@@ -47,14 +49,14 @@ function AdminSidebar({ setShowSidebar, showSidebar }) {
                     className={isActive('/admin') ? styles.active : ''}
                 >
                     <MdDashboard className={styles.icon} />
-                    Dashboard
+                    {t('dashboard')}
                 </Link>
                 <Link
                     href="/admin/products"
                     className={isActive('/admin/products') ? styles.active : ''}
                 >
                     <MdProductionQuantityLimits className={styles.icon} />
-                    Products
+                    {t('products')}
                 </Link>
                 <Link
                     href="/admin/restaurants"
@@ -63,39 +65,39 @@ function AdminSidebar({ setShowSidebar, showSidebar }) {
                     }
                 >
                     <FaClipboardList className={styles.icon} />
-                    Restaurants
+                    {t('restaurants')}
                 </Link>
                 <Link
                     href="/admin/category"
                     className={isActive('/admin/category') ? styles.active : ''}
                 >
                     <MdCategory className={styles.icon} />
-                    Category
+                    {t('category')}
                 </Link>
                 <Link
                     href="/admin/orders"
                     className={isActive('/admin/orders') ? styles.active : ''}
                 >
                     <BsBorderWidth className={styles.icon} />
-                    Orders
+                    {t('orders')}
                 </Link>
                 <Link
                     href="/admin/history"
                     className={isActive('/admin/history') ? styles.active : ''}
                 >
                     <MdHistory className={styles.icon} />
-                    History
+                    {t('history')}
                 </Link>
                 <Link
                     href="/admin/offer"
                     className={isActive('/admin/offer') ? styles.active : ''}
                 >
                     <MdLocalOffer className={styles.icon} />
-                    Offer
+                    {t('offer')}
                 </Link>
                 <Link href="/admin">
                     <IoIosLogOut className={styles.icon} />
-                    Logout
+                    {t('logout')}
                 </Link>
 
                 <div className={styles.eacamp}>

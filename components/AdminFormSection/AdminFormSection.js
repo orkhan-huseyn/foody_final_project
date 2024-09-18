@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import styles from './AdminFormSection.module.css';
+import { useState, useEffect } from 'react';
 import AdminFormDropdown from '../AdminFormDropdown/AdminFormDropdown';
 import { IoMdCloseCircle, IoMdCloudUpload } from 'react-icons/io';
 
@@ -17,9 +17,7 @@ function AdminFormSection({ handleCloseForm, fields }) {
         setId,
     } = fields;
 
-    const [imagePreview, setImagePreview] = useState(
-        'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='
-    );
+    const [imagePreview, setImagePreview] = useState('');
 
     useEffect(() => {
         setImagePreview(selectedImage);

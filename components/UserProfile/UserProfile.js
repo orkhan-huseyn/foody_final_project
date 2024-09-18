@@ -37,7 +37,6 @@ function Profile() {
             setContact(userData.phone || '');
             setLoading(false);
         } catch (err) {
-            setError('İstifadəçi məlumatları yüklənmədi');
             setLoading(false);
         }
     };
@@ -65,7 +64,6 @@ function Profile() {
             setColor('red');
             setMessage(err.response.data.error);
             console.log(err);
-            
         }
         setShow(true);
         setInterval(() => {
