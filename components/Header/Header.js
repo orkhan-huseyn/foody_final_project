@@ -13,10 +13,10 @@ import Languages from '../Languages/Languages';
 import Usermenu from 'components/UserMenu/Usermenu';
 
 function Header() {
-    const { t } = useTranslation();
     const [showNavbar, setShowNavbar] = useState(false);
-    const pathname = usePathname();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const pathname = usePathname();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -87,8 +87,9 @@ function Header() {
 
             <div className={styles.inputContainer}>
                 <input type="text" placeholder={t('search')} />
+                <Languages />
+
                 <div className={styles.buttonContainer}>
-                    <Languages />
                     {isLoggedIn && (
                         <Link
                             className={styles.headerBasketIcon}

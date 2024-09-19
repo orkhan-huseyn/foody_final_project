@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './AdminHistoryTable.module.css';
+import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 
 const historyData = [
     {
@@ -10,7 +11,8 @@ const historyData = [
         amount: '$249.7',
         paymentMethod: 'Cash On Delivery',
         contact: '994-51-410-3130',
-    }, {
+    },
+    {
         id: '9177',
         customerId: '022401',
         time: '25 Dec 2021',
@@ -19,8 +21,6 @@ const historyData = [
         paymentMethod: 'Cash On Delivery',
         contact: '994-51-410-3130',
     },
-    
-    
 ];
 
 const AdminHistoryTable = () => {
@@ -43,8 +43,15 @@ const AdminHistoryTable = () => {
         setCurrentPage(1);
     };
 
+    const headerDetails = {
+        headerTitle: 'History',
+        hasActionButton: false,
+        hasDropdown: false,
+    };
+
     return (
         <div className={styles.tableContainer}>
+            <AdminPageHeader headerDetails={headerDetails} />
             <table className={styles.table}>
                 <thead>
                     <tr>
@@ -63,9 +70,13 @@ const AdminHistoryTable = () => {
                             <td data-label="ID">{item.id}</td>
                             <td data-label="Customer ID">{item.customerId}</td>
                             <td data-label="Time">{item.time}</td>
-                            <td data-label="Delivery Address">{item.address}</td>
+                            <td data-label="Delivery Address">
+                                {item.address}
+                            </td>
                             <td data-label="Amount">{item.amount}</td>
-                            <td data-label="Payment Method">{item.paymentMethod}</td>
+                            <td data-label="Payment Method">
+                                {item.paymentMethod}
+                            </td>
                             <td data-label="Contact">{item.contact}</td>
                         </tr>
                     ))}
@@ -80,11 +91,17 @@ const AdminHistoryTable = () => {
                     <strong>{totalPages}</strong>
                 </div>
                 <div className={styles.pageControls}>
-                    <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-                        {"<"}
+                    <button
+                        onClick={handlePreviousPage}
+                        disabled={currentPage === 1}
+                    >
+                        {'<'}
                     </button>
-                    <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                        {">"}
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
+                    >
+                        {'>'}
                     </button>
                     <select
                         value={itemsPerPage}

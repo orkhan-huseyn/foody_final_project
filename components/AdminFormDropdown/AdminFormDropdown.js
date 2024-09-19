@@ -6,7 +6,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
 function AdminFormDropdown({ dropdownOptions, setId }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('Select option');
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);

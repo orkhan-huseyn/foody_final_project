@@ -3,12 +3,44 @@ import styles from './HeaderNavbar.module.css';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import api from '../../api';
 
 import { RiCloseLargeFill } from 'react-icons/ri';
+import profileimg from '../../assets/images/adminprofileimage/adminprofile.svg';
 
 function HeaderNavbar({ setShowNavbar }) {
-    const router = useRouter();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [fullName, setFullName] = useState('');
     const isActive = (path) => router.pathname === path;
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    const fetchUserData = async () => {
+        try {
+            const response = await api.get('/auth/user');
+            const userData = response.data.user;
+            setFullName(userData.fullname);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        router.replace('/client/login');
+    };
+
     return (
         <div className={styles.overlayContainer}>
             <motion.div
@@ -24,9 +56,16 @@ function HeaderNavbar({ setShowNavbar }) {
                     <RiCloseLargeFill />
                 </button>
 
-                <Link href="/client/login" className={styles.signupBtn}>
-                    Sign Up
-                </Link>
+                {!isLoggedIn ? (
+                    <Link href="/client/login" className={styles.signupBtn}>
+                        Sign Up
+                    </Link>
+                ) : (
+                    <div className={styles.userIcon}>
+                        <img src={profileimg.src} />
+                        <span>{fullName}</span>
+                    </div>
+                )}
 
                 <nav>
                     <Link
@@ -43,6 +82,49 @@ function HeaderNavbar({ setShowNavbar }) {
                     >
                         Restaurants
                     </Link>
+
+                    {isLoggedIn && (
+                        <Link
+                            href="/client/profile"
+                            className={
+                                isActive('/client/profile') ? styles.active : ''
+                            }
+                        >
+                            Profile
+                        </Link>
+                    )}
+                    {isLoggedIn && (
+                        <Link
+                            href="/client/basket"
+                            className={
+                                isActive('/client/basket') ? styles.active : ''
+                            }
+                        >
+                            Your Basket
+                        </Link>
+                    )}
+                    {isLoggedIn && (
+                        <Link
+                            href="/client/orders"
+                            className={
+                                isActive('/client/orders') ? styles.active : ''
+                            }
+                        >
+                            Your Orders
+                        </Link>
+                    )}
+                    {isLoggedIn && (
+                        <Link
+                            href="/client/checkout"
+                            className={
+                                isActive('/client/checkout')
+                                    ? styles.active
+                                    : ''
+                            }
+                        >
+                            Checkout
+                        </Link>
+                    )}
                     <Link
                         href="/client/about-us"
                         className={
@@ -67,6 +149,10 @@ function HeaderNavbar({ setShowNavbar }) {
                     >
                         Faqs
                     </Link>
+
+                    {isLoggedIn && (
+                        <button onClick={handleLogout}>Logout</button>
+                    )} 
                 </nav>
             </motion.div>
         </div>

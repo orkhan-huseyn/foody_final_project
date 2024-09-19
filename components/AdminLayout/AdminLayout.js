@@ -2,7 +2,8 @@ import styles from './AdminLayout.module.css';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import api from '../../api';
+import { useTranslation } from 'react-i18next';
 
 import Languages from 'components/Languages/Languages';
 import AdminSidebar from 'components/AdminSidebar/AdminSidebar';
@@ -27,6 +28,7 @@ import { FaClipboardList } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 function AdminLayout({ children }) {
+    const { t } = useTranslation();
     const [name, setName] = useState('');
     const [restaurants, setRestaurants] = useState([]);
     const [description, setDescription] = useState('');
@@ -38,8 +40,6 @@ function AdminLayout({ children }) {
     const router = useRouter();
     const isActive = (path) => router.pathname === path;
 
-    console.log(restId);
-
     const handleProductsSubmit = async () => {
         const data = {
             name,
@@ -50,12 +50,7 @@ function AdminLayout({ children }) {
         };
 
         try {
-            //POST REQUEST
-            await axios.post('http://localhost:3000/api/products', data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            await api.post('/products', data);
         } catch (error) {
             console.log(error.message);
         }
@@ -64,9 +59,7 @@ function AdminLayout({ children }) {
     };
 
     const fetchRestaurants = async () => {
-        const response = await axios.get(
-            'http://localhost:3000/api/restaurants'
-        );
+        const response = await api.get('/restaurants');
         const result = response.data.result.data;
         setRestaurants(result);
     };
@@ -167,7 +160,7 @@ function AdminLayout({ children }) {
                         >
                             {' '}
                             <FaPlus className={styles.plusIcon} />{' '}
-                            <span>Add product</span>
+                            <span>{t('addproduct')}</span>
                         </button>
                         <div className={styles.languages}>
                             <Languages backgroundColor={'#27283C'} />
@@ -185,7 +178,7 @@ function AdminLayout({ children }) {
                             className={isActive('/admin') ? styles.active : ''}
                         >
                             <MdDashboard className={styles.icon} />
-                            Dashboard
+                            {t('dashboard')}
                         </Link>
                         <Link
                             href="/admin/products"
@@ -196,7 +189,7 @@ function AdminLayout({ children }) {
                             <MdProductionQuantityLimits
                                 className={styles.icon}
                             />
-                            Products
+                            {t('products')}
                         </Link>
                         <Link
                             href="/admin/restaurants"
@@ -207,7 +200,7 @@ function AdminLayout({ children }) {
                             }
                         >
                             <FaClipboardList className={styles.icon} />
-                            Restaurants
+                            {t('restaurants')}
                         </Link>
                         <Link
                             href="/admin/category"
@@ -216,7 +209,7 @@ function AdminLayout({ children }) {
                             }
                         >
                             <MdCategory className={styles.icon} />
-                            Category
+                            {t('category')}
                         </Link>
                         <Link
                             href="/admin/orders"
@@ -225,7 +218,7 @@ function AdminLayout({ children }) {
                             }
                         >
                             <BsBorderWidth className={styles.icon} />
-                            Orders
+                            {t('orders')}
                         </Link>
                         <Link
                             href="/admin/history"
@@ -234,7 +227,7 @@ function AdminLayout({ children }) {
                             }
                         >
                             <MdHistory className={styles.icon} />
-                            History
+                            {t('history')}
                         </Link>
                         <Link
                             href="/admin/offer"
@@ -243,11 +236,11 @@ function AdminLayout({ children }) {
                             }
                         >
                             <MdLocalOffer className={styles.icon} />
-                            Offer
+                            {t('offer')}
                         </Link>
                         <Link href="/admin">
                             <IoIosLogOut className={styles.icon} />
-                            Logout
+                            {t('logout')}
                         </Link>
                     </div>
 

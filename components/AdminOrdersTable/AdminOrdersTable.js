@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaTrashAlt, FaEye } from 'react-icons/fa';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import styles from './AdminOrdersTable.module.css';
+import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 
 const AdminOrdersTable = () => {
     const [orders, setOrders] = useState([
@@ -23,16 +24,21 @@ const AdminOrdersTable = () => {
             paymentMethod: 'Credit Card',
             contact: '994-51-410-3131',
         },
-    
     ]);
 
     const handleDelete = (orderId) => {
         setOrders(orders.filter((order) => order.id !== orderId));
     };
 
+    const headerDetails = {
+        headerTitle: 'Orders',
+        hasActionButton: false,
+        hasDropdown: false,
+    };
+
     return (
         <div>
-            <div className={styles.ordersTitle}><h2>Orders</h2> </div>
+            <AdminPageHeader headerDetails={headerDetails} />
             <div className={styles.tableWrapper}>
                 <table className={styles.table}>
                     <thead>
@@ -79,9 +85,13 @@ const AdminOrdersTable = () => {
             </div>
             <div className={styles.pagination}>
                 <div className={styles.pageInfo}>
-                    <button disabled><MdKeyboardArrowLeft /></button>
+                    <button disabled>
+                        <MdKeyboardArrowLeft />
+                    </button>
                     <span>1 / 16</span>
-                    <button><MdKeyboardArrowRight /></button>
+                    <button>
+                        <MdKeyboardArrowRight />
+                    </button>
                 </div>
                 <select>
                     <option value="15">15</option>
