@@ -210,38 +210,93 @@
 }
 
 @media (max-width: 768px) {
-    .popupContent {
-        width: 100%;
-        padding: 15px;
-        max-width: 600px;
-    }
-
-    .popupContent th, .popupContent td {
+    .ordersTable th, .ordersTable td {
         padding: 8px;
         font-size: 14px;
     }
 
-    .popupContent img {
-        width: 40px;
-        height: auto;
+    .pagination {
+        justify-content: center;
+    }
+
+    .pageButton {
+        padding: 5px 8px;
+        font-size: 12px;
+        margin: 2px;
+    }
+
+    .rowsPerPage {
+        display: none;
+    }
+
+    .pageNumber {
+        margin: 0 5px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 505px) {
+    .ordersTable th, .ordersTable td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+
+    .pageButton {
+        padding: 5px 8px;
+        font-size: 12px;
+        margin: 2px;
+    }
+
+    .pageNumber {
+        margin: 0 5px;
+        font-size: 12px;
     }
 }
 
 @media (max-width: 480px) {
-    .popupContent {
-        width: 100%;
-        padding: 10px;
-        max-width: 320px;
+    .ordersTable th, .ordersTable td {
+        padding: 6px;
+        font-size: 10px;
     }
 
-    .popupContent th, .popupContent td {
+    .pagination {
+        justify-content: center;
+    }
+
+    .pageButton {
+        padding: 4px 6px;
+        font-size: 10px;
+        margin: 2px;
+    }
+
+    .pageNumber {
+        margin: 0 5px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .ordersTable th, .ordersTable td {
         padding: 5px;
-        font-size: 12px;
+        font-size: 9px;
     }
 
-    .popupContent img {
-        width: 30px;
-        height: auto;
-        margin-bottom: 10px;
+    .pagination {
+        justify-content: center;
+    }
+
+    .pageButton {
+        padding: 3px 6px;
+        font-size: 9px;
+        margin: 1px;
+    }
+
+    .pageNumber {
+        margin: 0 3px;
+        font-size: 9px;
     }
 }
