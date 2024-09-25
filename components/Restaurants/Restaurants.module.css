@@ -42,6 +42,8 @@
 }
 
 .menuBarTitle {
+    border: 0;
+    background-color: transparent;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -49,11 +51,16 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+    font-size: 18px;
+    font-weight: 500;
+    width: 80%;
 }
 
 .menuBarTitle img {
     width: 30px;
     height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .menuBarTitle a {
@@ -120,7 +127,9 @@
 }
 
 .cardImg img {
-    width: 70%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .card h3 {

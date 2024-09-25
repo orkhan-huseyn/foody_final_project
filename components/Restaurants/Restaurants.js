@@ -1,101 +1,47 @@
 import styles from './Restaurants.module.css';
-
 import Link from 'next/link';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import api from '../../api';
+import logo from '../../assets/images/eacamplogo/eacamp.svg';
+import LoadingIcon from '../Loading/Loading';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { MdFilterList } from 'react-icons/md';
 
-import pizza from '../../assets/images/baskets/pizza.svg';
-
-const menuBarItems = [
-    { src: pizza, label: 'Chinese' },
-    { src: pizza, label: 'Sea Food' },
-    { src: pizza, label: 'Fast Food' },
-    { src: pizza, label: 'Pizza' },
-    { src: pizza, label: 'Indian' },
-    { src: pizza, label: 'Kebab' },
-    { src: pizza, label: 'Chinese' },
-    { src: pizza, label: 'Sea Food' },
-    { src: pizza, label: 'Fast Food' },
-    { src: pizza, label: 'Pizza' },
-    { src: pizza, label: 'Indian' },
-    { src: pizza, label: 'Kebab' },
-    { src: pizza, label: 'Chinese' },
-    { src: pizza, label: 'Sea Food' },
-    { src: pizza, label: 'Fast Food' },
-    { src: pizza, label: 'Pizza' },
-    { src: pizza, label: 'Indian' },
-    { src: pizza, label: 'Kebab' },
-    { src: pizza, label: 'Chinese' },
-    { src: pizza, label: 'Sea Food' },
-    { src: pizza, label: 'Fast Food' },
-    { src: pizza, label: 'Pizza' },
-    { src: pizza, label: 'Indian' },
-    { src: pizza, label: 'Kebab' },
-];
-
-const restaurants = [
-    {
-        src: pizza.src,
-        name: 'Coffee Mania',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-    {
-        src: pizza.src,
-        name: 'Burger King',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$1 Delivery',
-        time: '30 Min',
-    },
-    {
-        src: pizza.src,
-        name: 'Anadolu Restaurant',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-    {
-        src: pizza.src,
-        name: "Papa John's",
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-    {
-        src: pizza.src,
-        name: 'Coffee Mania',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-    {
-        src: pizza.src,
-        name: 'Burger King',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$1 Delivery',
-        time: '30 Min',
-    },
-    {
-        src: pizza.src,
-        name: 'Anadolu Restaurant',
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-    {
-        src: pizza.src,
-        name: "Papa John's",
-        description: 'chinese, sea-food, thai, lebanese, caribbean',
-        delivery: '$5 Delivery',
-        time: '09 Min',
-    },
-];
-
 function Restaurants() {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [restaurants, setRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchRestaurants = async () => {
+        try {
+            const response = await api.get('/restaurants');
+            const result = response.data.result.data;
+            setRestaurants(result);
+            setFilteredRestaurants(result);
+            setLoading(false);
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchRestaurants();
+    }, []);
+
+    const handleFilter = (filter) => {
+        if (filter === 'All') {
+            setFilteredRestaurants(restaurants);
+        } else {
+            const filtered = restaurants.filter((restaurant) =>
+                restaurant.name.toLowerCase().includes(filter.toLowerCase())
+            );
+            setFilteredRestaurants(filtered);
+        }
+    };
+
+    if (loading) return <LoadingIcon />;
 
     return (
         <div className={styles.restaurantsContainer}>
@@ -108,37 +54,50 @@ function Restaurants() {
             </button>
             <div className={styles.container}>
                 <div className={styles.menuBar}>
-                    {menuBarItems.map((item, index) => (
-                        <div key={index} className={styles.menuBarTitle}>
-                            <img src={item.src.src} alt={item.label} />
-                            <a href="#">{item.label}</a>
-                        </div>
+                    <button
+                        className={styles.menuBarTitle}
+                        onClick={() => handleFilter('All')}
+                    >
+                        <img src={logo.src} />
+                        All
+                    </button>
+                    {restaurants.map((item, index) => (
+                        <button
+                            key={index}
+                            className={styles.menuBarTitle}
+                            onClick={() => handleFilter(item.name)}
+                        >
+                            <img src={item.img_url} alt={item.name} />
+                            {item.name}
+                        </button>
                     ))}
                 </div>
+
                 <div className={styles.restaurants}>
-                    {restaurants.map((restaurant, index) => (
+                    {filteredRestaurants.map((restaurant, index) => (
                         <Link
                             key={index}
                             className={styles.card}
-                            href="/client/restaurant-id"
+                            href={`/client/restaurants/${restaurant.id}`}
                         >
                             <div className={styles.cardImg}>
                                 <img
-                                    src={restaurant.src}
+                                    src={restaurant.img_url}
                                     alt={restaurant.name}
                                 />
                             </div>
                             <h3>{restaurant.name}</h3>
-                            <p>{restaurant.description}</p>
+                            <p>{restaurant.cuisine}</p>
                             <div className={styles.price}>
-                                <h6>{restaurant.delivery}</h6>
-                                <h5>{restaurant.time}</h5>
+                                <h6>${restaurant.delivery_price}</h6>
+                                <h5>{restaurant.delivery_min} min</h5>
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
 
+            {/* Mobile Menu */}
             {mobileOpen ? (
                 <div className={styles.mobileMenuOverlay}>
                     <div className={styles.mobileMenu}>
@@ -151,12 +110,16 @@ function Restaurants() {
                             />
                         </button>
                         <div className={styles.mobileMenuItems}>
-                            {menuBarItems.map((item, index) => (
+                            {restaurants.map((item, index) => (
                                 <div
                                     key={index}
                                     className={styles.mobileMenuItem}
                                 >
-                                    <a href="#">{item.label}</a>
+                                    <button
+                                        onClick={() => handleFilter(item.name)}
+                                    >
+                                        {item.name}
+                                    </button>
                                 </div>
                             ))}
                         </div>

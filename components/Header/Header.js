@@ -25,6 +25,8 @@ function Header() {
         }
     }, []);
 
+    if (!pathname) return null;
+
     return (
         <header className={styles.headerContainer}>
             <div className={styles.logoContainer}>

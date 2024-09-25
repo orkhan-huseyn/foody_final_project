@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
+import LoadingIcon from '../Loading/Loading';
 
 const AdminProductsTable = () => {
     const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ const AdminProductsTable = () => {
     const [restId, setRestId] = useState('');
     const [selectedProductImage, setSelectedProductImage] = useState('');
     const [isEditing, setIsEditing] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [selectedProductId, setSelectedProductId] = useState(null);
 
     const handleProductsSubmit = async () => {
@@ -44,8 +46,10 @@ const AdminProductsTable = () => {
             const response = await api.get('/products');
             const result = response.data.result.data;
             setProducts(result);
+            setLoading(false);
         } catch (error) {
             console.log(error.message);
+            setLoading(false);
         }
     };
 
@@ -157,6 +161,8 @@ const AdminProductsTable = () => {
             },
         ],
     };
+
+    if (loading) return <LoadingIcon />;
 
     return (
         <>

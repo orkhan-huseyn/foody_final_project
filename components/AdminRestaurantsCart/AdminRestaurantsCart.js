@@ -5,6 +5,8 @@ import api from '../../api';
 
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
+import LoadingIcon from '../Loading/Loading';
+
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 function AdminRestaurantsCart() {
@@ -18,6 +20,7 @@ function AdminRestaurantsCart() {
     const [address, setAddress] = useState('');
     const [selectedRestaurantsImage, setSelectedRestaurantsImage] =
         useState('');
+    const [loading, setLoading] = useState(true);
     const [categoryId, setCategoryId] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [selectedRestaurantId, setSelectedRestaurantId] = useState(null);
@@ -58,8 +61,10 @@ function AdminRestaurantsCart() {
             const response = await api.get('/restaurants');
             const result = response.data.result.data;
             setRestaurants(result);
+            setLoading(false);
         } catch (error) {
             console.log(error.message);
+            setLoading(false);
         }
     };
 
@@ -209,7 +214,7 @@ function AdminRestaurantsCart() {
             },
         ],
     };
-
+    if (loading) return <LoadingIcon />;
     return (
         <>
             <AdminPageHeader
