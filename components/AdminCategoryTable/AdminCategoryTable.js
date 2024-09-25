@@ -5,6 +5,7 @@ import api from '../../api.js';
 
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
+import LoadingIcon from '../Loading/Loading';
 
 import { FaPencil } from 'react-icons/fa6';
 import { MdOutlineDelete } from 'react-icons/md';
@@ -17,6 +18,7 @@ const CategoryTable = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
     // Requests
@@ -52,8 +54,10 @@ const CategoryTable = () => {
             const response = await api.get('/category');
             const result = response.data.result.data;
             setCategories(result);
+            setLoading(false);
         } catch (error) {
             setErrorMessage(error.message);
+            setLoading(false);
         }
     };
 
@@ -157,6 +161,8 @@ const CategoryTable = () => {
             },
         ],
     };
+
+    if (loading) return <LoadingIcon />;
 
     return errorMessage ? (
         <div className={styles.errorMessage}>

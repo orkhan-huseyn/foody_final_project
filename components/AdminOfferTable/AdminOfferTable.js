@@ -2,6 +2,7 @@ import styles from './AdminOfferTable.module.css';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import AdminPageHeader from 'components/AdminPageHeader/AdminPageHeader';
 import AdminFormSection from 'components/AdminFormSection/AdminFormSection';
+import LoadingIcon from '../Loading/Loading';
 import { useState, useEffect } from 'react';
 import api from '../../api';
 function AdminOfferTable() {
@@ -12,6 +13,7 @@ function AdminOfferTable() {
     const [selectedOfferId, setSelectedOfferId] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleOfferSubmit = async () => {
         const data = {
@@ -44,8 +46,10 @@ function AdminOfferTable() {
             const response = await api.get('/offer');
             const result = response.data.result.data;
             setOffers(result);
+            setLoading(false);
         } catch (error) {
             console.log(error.message);
+            setLoading(false);
         }
     };
 
@@ -137,6 +141,8 @@ function AdminOfferTable() {
         hasActionButton: true,
         actionButtonName: 'Add offer',
     };
+
+    if (loading) return <LoadingIcon />;
 
     return (
         <>
